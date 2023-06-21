@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PerfectBudgetApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class BudgetDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public BudgetDbContext(DbContextOptions<BudgetDbContext> options)
             : base(options)
         {
         }
