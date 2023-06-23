@@ -17,5 +17,6 @@ namespace PerfectBudgetApp.Data.Models
         public decimal Amount { get; set; }
         public IEnumerable<Debt> BudgetDebtList { get; set; } = new List<Debt>();
         public IEnumerable<Expense> BudgetExpenseList { get; set; } = new List<Expense>();
+        public IEnumerable<BudgetExpense> BudgetsExpenses { get; set; } = new List<BudgetExpense>();
     }
 }

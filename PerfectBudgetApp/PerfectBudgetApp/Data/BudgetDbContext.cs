@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PerfectBudgetApp.Data.Models;
+using System.Reflection.Emit;
 
 namespace PerfectBudgetApp.Data
 {
@@ -56,7 +57,17 @@ namespace PerfectBudgetApp.Data
                 .HasPrecision(18, 2);
 
             //Set delete behavior
-           
+            builder.Entity<BudgetExpense>()
+                .HasOne(b => b.Budget)
+                .WithMany(b => b.BudgetsExpenses)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<BudgetExpense>()
+                .HasOne(b => b.Expense)
+                .WithMany(b => b.BudgetsExpenses)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            base.OnModelCreating(builder);
         }
 
 

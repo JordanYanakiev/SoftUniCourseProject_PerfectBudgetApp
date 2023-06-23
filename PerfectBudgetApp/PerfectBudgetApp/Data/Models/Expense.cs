@@ -14,5 +14,7 @@ namespace PerfectBudgetApp.Data.Models
         public decimal Amount { get; set; }
         [Required]
         public DateTime DateOfIssuedExpense { get; set; }
+
+        public IEnumerable<BudgetExpense> BudgetsExpenses { get;set; } = new List<BudgetExpense>();
     }
 }
