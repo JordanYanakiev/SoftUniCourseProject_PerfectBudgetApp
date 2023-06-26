@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AddBudgetViewModel>
+@{
+}
+
+<div class="container" style=" margin-bottom:0px;  vertical-align: middle;">
+      <div class="row justify-content-between">
+        <div class="col-2" style=" vertical-align: middle;">
+                <h1> Budgets </h1style>
+        </div>
+        <div class="col-2" style=" vertical-align: middle;">
+            <form class="input-group-sm" asp-controller="Budget" asp-action="AddBudget" method="get">
+                <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Add new budget" />
+            </form>
+        </div>
+      </div>
+    </div>
+<hr style="margin-top:0px;" />
+  <div class="col-2 col-md-10" style=" vertical-align: middle;">
+        @foreach (var budget in Model)
+        {
+            <div class="card col-4" style="width: 20rem;">
+                <div class="card-body">
+
+                    <h5 class="card-title mt-1">@budget.Name</h5>
+                    <p class="mb-0">Amount: @budget.Amount</p>
+                <form class="input-group-sm" asp-controller="Budget" asp-action="EditBudget" method="get">
+                    <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Add more money" />
+                </form>
+                </div>
+            </div>
+        }
+  </div>
+
+
+
+
+
+
+
