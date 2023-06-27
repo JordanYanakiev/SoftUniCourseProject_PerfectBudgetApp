@@ -4,6 +4,7 @@ using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
 using PerfectBudgetApp.Data.Models;
 using PerfectBudgetApp.Models;
+using System.Security.Claims;
 
 namespace PerfectBudgetApp.Services
 {
@@ -39,25 +40,65 @@ namespace PerfectBudgetApp.Services
             await dbContext.SaveChangesAsync();
         }
 
+        public async Task<EditBudgetViewModel> GetEditBudgetViewModel(Guid Id, string userId)
+        {
+            var budget = await dbContext.UsersBudgets
+                .Include(m => m.Budget)
+                .FirstOrDefaultAsync(b =>  b.BudgetId == Id);
+
+            var editBudgetViewModel = new EditBudgetViewModel()
+            {
+                BudgetId = budget.Budget.Id,
+                Name = budget.Budget.Name,
+                Amount = budget.Budget.Amount,
+                User = budget.User,
+                Budget = budget.Budget
+            };
+            
+            return editBudgetViewModel;
+        }
+
+        public async Task EditBudget(EditBudgetViewModel editBudgetViewModel, Guid budgetId, string userId)
+        {
+            //var budget = new Budget()
+            //{
+            //    Id = editBudgetViewModel.Id,
+            //    Name = editBudgetViewModel.Name,
+            //    Amount = editBudgetViewModel.Amount
+            //};
+
+            var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            //var userBudget = await dbContext.UsersBudgets
+                //.FirstOrDefaultAsync(u => u.UserId == userId && u.BudgetId == budgetId);     
+            
+            var userBudget = await dbContext.Budgets
+                .FirstOrDefaultAsync(u => u.Id == budgetId);
+
+            var budget = await dbContext.Budgets
+                .FirstOrDefaultAsync(u => u.Id == budgetId);
+
+            if (userBudget != null)
+            {
+                userBudget.Amount = editBudgetViewModel.Amount;
+                userBudget.Name = editBudgetViewModel.Name;
+            }
+
+            var budgetToSave = new Budget()
+            {
+                Id = editBudgetViewModel.BudgetId,
+                Name = editBudgetViewModel.Name,
+                Amount = editBudgetViewModel.Amount
+            };
+
+            await dbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<AddBudgetViewModel>> GetAllBudgets(string userId)
         {
             var budgets = await dbContext.UsersBudgets
                 .Include(m => m.Budget)
                 .ToListAsync();
-
-            //List<AddBudgetViewModel> addBudgetViewModelList = new List<AddBudgetViewModel>();
-
-            //foreach (var budget in budgets)
-            //{
-            //    AddBudgetViewModel addBudgetViewModel = new AddBudgetViewModel();
-            //    addBudgetViewModel.Id = budget.BudgetId;
-            //    addBudgetViewModel.Name = budget.Budget.Name;
-            //    addBudgetViewModel.Amount = budget.Budget.Amount;
-
-            //    addBudgetViewModelList.Add(addBudgetViewModel);
-
-
-            //}
 
             var modelsList = budgets
                .Select(m => new AddBudgetViewModel()
@@ -68,7 +109,10 @@ namespace PerfectBudgetApp.Services
                });
 
             return modelsList;
-
         }
+
+
+
+
     }
 }

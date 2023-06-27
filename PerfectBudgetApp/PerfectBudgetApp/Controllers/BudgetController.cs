@@ -41,9 +41,26 @@ namespace PerfectBudgetApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditBudget()
+        public async Task<IActionResult> EditBudget(Guid id)
         {
-            return View();
+            string userId =  User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            EditBudgetViewModel editBudgetModel = await budgetService.GetEditBudgetViewModel(id, userId);
+            EditBudgetViewModel editBudgetModel2 = await budgetService.GetEditBudgetViewModel(id, userId);
+
+            return View(editBudgetModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditBudget(Guid id, EditBudgetViewModel editBudgetModel)
+        {
+            string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            //EditBudgetViewModel editBudgetModel = await budgetService.GetEditBudgetViewModel(id, userId);
+            if (ModelState.IsValid)
+            {
+                await budgetService.EditBudget(editBudgetModel, id, userId);
+            }
+
+            return RedirectToAction(nameof(Budget));
         }
 
     }

@@ -23,9 +23,12 @@
 
                     <h5 class="card-title mt-1">@budget.Name</h5>
                     <p class="mb-0">Amount: @budget.Amount</p>
-                <form class="input-group-sm" asp-controller="Budget" asp-action="EditBudget" method="get">
-                    <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Add more money" />
+
+                <form class="input-group-sm" asp-controller="Budget" asp-action="EditBudget" asp-route-id="@budget.Id" method="get">
+                    <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Add more money" />
                 </form>
+                <a href="/Budget/EditBudget/@budget.Id" class="btn btn-warning">Edit</a>
+
                 </div>
             </div>
         }
