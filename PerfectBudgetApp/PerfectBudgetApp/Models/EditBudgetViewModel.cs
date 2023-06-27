@@ -12,7 +12,5 @@ namespace PerfectBudgetApp.Models
         public string Name { get; set; } = null!;
         [Required]
         public decimal Amount { get; set; }
-        public IdentityUser User { get; set; }
-        public Budget Budget { get; set; }
     }
 }

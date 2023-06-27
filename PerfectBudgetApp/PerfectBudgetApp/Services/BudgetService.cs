@@ -50,9 +50,7 @@ namespace PerfectBudgetApp.Services
             {
                 BudgetId = budget.Budget.Id,
                 Name = budget.Budget.Name,
-                Amount = budget.Budget.Amount,
-                User = budget.User,
-                Budget = budget.Budget
+                Amount = budget.Budget.Amount
             };
             
             return editBudgetViewModel;
@@ -98,6 +96,7 @@ namespace PerfectBudgetApp.Services
         {
             var budgets = await dbContext.UsersBudgets
                 .Include(m => m.Budget)
+                .Where(m =>  m.UserId == userId )
                 .ToListAsync();
 
             var modelsList = budgets
