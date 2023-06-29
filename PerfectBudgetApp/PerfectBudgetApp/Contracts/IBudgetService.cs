@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PerfectBudgetApp.Data.Models;
-using PerfectBudgetApp.Models;
+using PerfectBudgetApp.Models.Budgets;
 
 namespace PerfectBudgetApp.Contracts
 {

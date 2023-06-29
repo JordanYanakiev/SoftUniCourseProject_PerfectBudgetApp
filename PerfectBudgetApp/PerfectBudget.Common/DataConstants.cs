@@ -1,7 +1,8 @@
 ﻿namespace PerfectBudget.Common
 {
-    public class DataConstants
+    public static class DataConstants
     {
-
+        public const int BudgetNameMaxLength = 25;
+        public const int BudgetNameMinLength = 3;
     }
 }

@@ -28,4 +28,8 @@
     <ProjectReference Include="..\PerfectBudget.Data\PerfectBudget.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Loans\" />
+  </ItemGroup>
+
 </Project>

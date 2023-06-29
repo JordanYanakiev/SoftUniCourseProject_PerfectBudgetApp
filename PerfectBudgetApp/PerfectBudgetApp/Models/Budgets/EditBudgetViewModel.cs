@@ -1,11 +1,12 @@
-﻿using PerfectBudgetApp.Data.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using PerfectBudgetApp.Data.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace PerfectBudgetApp.Models
+namespace PerfectBudgetApp.Models.Budgets
 {
-    public class AddBudgetViewModel
+    public class EditBudgetViewModel
     {
-        public Guid Id { get; set; }
+        public Guid BudgetId { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 3)]
         public string Name { get; set; } = null!;

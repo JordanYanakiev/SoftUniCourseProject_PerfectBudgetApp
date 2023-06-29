@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
 using PerfectBudgetApp.Data.Models;
-using PerfectBudgetApp.Models;
+using PerfectBudgetApp.Models.Budgets;
 using System.Security.Claims;
 
 namespace PerfectBudgetApp.Services
