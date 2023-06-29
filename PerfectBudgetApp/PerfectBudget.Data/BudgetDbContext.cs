@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PerfectBudget.Data.Models;
 using PerfectBudgetApp.Data.Models;
 using System.Reflection.Emit;
 
@@ -17,11 +18,19 @@ namespace PerfectBudgetApp.Data
         public DbSet<UserBudget> UsersBudgets { get; set; }
         public DbSet<UserDebt> UsersDebts { get; set; }
         public DbSet<UserExpense> UsersExpenses { get; set; }
+        public DbSet<DebtIssuer> DebtsIssuers { get; set; }
+        public DbSet<DebtReceiver> DebtsReceivers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             //Set foreign keys
+
+            builder.Entity<DebtReceiver>()
+                .HasKey(be => new { be.DebtId, be.DebtReceiverId });
+
+            builder.Entity<DebtIssuer>()
+                .HasKey(be => new { be.DebtId, be.DebtIssuerId });
 
             builder.Entity<BudgetExpense>()
                 .HasKey(be => new { be.BudgetId, be.ExpenseId });
