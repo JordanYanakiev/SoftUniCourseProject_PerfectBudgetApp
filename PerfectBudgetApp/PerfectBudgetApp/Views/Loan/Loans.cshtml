@@ -1,0 +1,45 @@
+﻿@using PerfectBudgetApp.Models.Budgets;
+
+@model IEnumerable<AddBudgetViewModel>
+@{
+}
+
+<div class="container" style=" margin-bottom:0px;  vertical-align: middle;">
+    <div class="row justify-content-between">
+        <div class="col-2" style=" vertical-align: middle;">
+            <h1> Loans </h1style>
+        </div>
+        <div class="col-2" style=" vertical-align: middle;">
+            <form class="input-group-sm" asp-controller="Budget" asp-action="AddBudget" method="get">
+                <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Request new loan" />
+            </form>
+        </div>
+    </div>
+</div>
+<hr style="margin-top:0px;" />
+@*<div class="container" style="position:center;">
+    @foreach (var budget in Model)
+    {
+        <div class="container" style="margin-bottom:3px; padding-left:235px;">
+            <div class="row" style="height:55px; width:850px; border-width:120px; border-radius: 10px; border:solid; padding-top:5px; ">
+
+                <div class="col-6 col-md-4" style="text-align:left;  padding-top:3px;">
+                    <h5 class="mt-1">@budget.Name</h5>
+                </div>
+                <div class="col-4 col-md-4" style=" text-align: center; center-block;  padding-top:8px;">
+                    <p class="mb-10">Amount: @budget.Amount</p>
+                </div>
+                <div class="col-4 col-md-4" style=" text-align: right; padding-top:1px;">
+                    <form class="input-group-sm" asp-controller="Budget" asp-action="EditBudget" asp-route-id="@budget.Id" method="get">
+                        <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-20 p-2 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Edit Budget" />
+                    </form>
+                </div>
+                @*<a href="/Budget/EditBudget/@budget.Id" class="btn btn-warning">Edit</a>*@
+
+@*</div>
+        </div>
+    }
+</div>*@
+
+
+

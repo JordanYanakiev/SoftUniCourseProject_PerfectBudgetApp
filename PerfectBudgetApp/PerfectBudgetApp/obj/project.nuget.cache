@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sc8BGhKrz64oLLcHZqRGOiBqb3j/Q1ESDfl+/5GmDpdOoiJm34NkYxvlANnnrmRC2fyzVJdlLEzwWZwc5v6uEA==",
+  "dgSpecHash": "ibvgoMstD/Kq0oZH1T1iq399ELyLrYhF5yBbGSCWAGW9RBELaG9FyTNbHSihFUDc8OWKtORJecPTXxTtnxAEww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudgetApp.csproj",
+  "projectFilePath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudgetApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Johny\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Johny\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

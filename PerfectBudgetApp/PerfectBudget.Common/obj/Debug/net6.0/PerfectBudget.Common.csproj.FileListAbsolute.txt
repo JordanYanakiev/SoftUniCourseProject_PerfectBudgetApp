@@ -22,3 +22,15 @@ C:\Users\Johny\Documents\GitHub\SoftUniCourseProject\SoftUniCourseProject_Perfec
 C:\Users\Johny\Documents\GitHub\SoftUniCourseProject\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\refint\PerfectBudget.Common.dll
 C:\Users\Johny\Documents\GitHub\SoftUniCourseProject\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.pdb
 C:\Users\Johny\Documents\GitHub\SoftUniCourseProject\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\ref\PerfectBudget.Common.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\bin\Debug\net6.0\PerfectBudget.Common.deps.json
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\bin\Debug\net6.0\PerfectBudget.Common.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\bin\Debug\net6.0\PerfectBudget.Common.pdb
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.csproj.AssemblyReference.cache
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.AssemblyInfoInputs.cache
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.AssemblyInfo.cs
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.csproj.CoreCompileInputs.cache
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\refint\PerfectBudget.Common.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\PerfectBudget.Common.pdb
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Common\obj\Debug\net6.0\ref\PerfectBudget.Common.dll

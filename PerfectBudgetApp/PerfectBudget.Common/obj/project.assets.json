@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj",
+      "projectUniqueName": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj",
       "projectName": "PerfectBudget.Common",
-      "projectPath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj",
+      "projectPath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj",
       "packagesPath": "C:\\Users\\Johny\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\obj\\",
+      "outputPath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
