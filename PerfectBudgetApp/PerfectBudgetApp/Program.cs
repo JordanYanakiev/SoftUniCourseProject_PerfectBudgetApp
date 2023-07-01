@@ -30,7 +30,7 @@ namespace PerfectBudgetApp
             });
 
             builder.Services.AddScoped<IBudgetService, BudgetService>();
-
+            builder.Services.AddScoped<ILoanService, LoanService>();
 
             var app = builder.Build();
 

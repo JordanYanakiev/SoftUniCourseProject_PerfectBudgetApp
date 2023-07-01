@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PerfectBudgetApp.Data.Models;
 using PerfectBudgetApp.Models.Loans;
 
 namespace PerfectBudgetApp.Contracts

@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Models.Loans;
 using PerfectBudgetApp.Services;
 using System.Security.Claims;
 
 namespace PerfectBudgetApp.Controllers
 {
-    
-
     public class LoanController : Controller
     {
-        LoanService loanService;
+        private readonly ILoanService loanService;
 
-        public LoanController(LoanService _loanService)
+        public LoanController(ILoanService _loanService)
         {
-            loanService = _loanService;
+            this.loanService = _loanService;
         }
 
 
@@ -22,7 +21,7 @@ namespace PerfectBudgetApp.Controllers
             return View();
         }
 
-        [HttpGet]
+
         public IActionResult Loans()
         {
             return View();
@@ -31,7 +30,7 @@ namespace PerfectBudgetApp.Controllers
         [HttpPost]
         public async Task<IActionResult> RequestLoan(LoanRequestViewModel model)
         {
-            string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;]
+            string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             await loanService.RequestLoanAsync(model, userId);
 
             return RedirectToAction(nameof(Loans));
