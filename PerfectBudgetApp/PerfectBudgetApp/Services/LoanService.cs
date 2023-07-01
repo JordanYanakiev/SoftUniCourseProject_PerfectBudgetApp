@@ -1,5 +1,7 @@
-﻿using PerfectBudgetApp.Contracts;
+﻿using Microsoft.AspNetCore.Mvc;
+using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
+using PerfectBudgetApp.Models.Loans;
 
 namespace PerfectBudgetApp.Services
 {
@@ -12,5 +14,9 @@ namespace PerfectBudgetApp.Services
             budgetDvContext = _budgetDbContext;
         }
 
+        public Task RequestLoanAsync(LoanRequestViewModel model, string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
