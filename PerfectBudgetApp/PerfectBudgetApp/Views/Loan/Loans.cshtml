@@ -1,6 +1,6 @@
-﻿@using PerfectBudgetApp.Models.Budgets;
+﻿@using PerfectBudgetApp.Models.Loans;
 
-@model IEnumerable<AddBudgetViewModel>
+@model IEnumerable<LoanRequestViewModel>
 @{
 }
 
@@ -10,7 +10,7 @@
             <h1> Loans </h1style>
         </div>
         <div class="col-2" style=" vertical-align: middle;">
-            <form class="input-group-sm" asp-controller="Budget" asp-action="AddBudget" method="get">
+            <form class="input-group-sm" asp-controller="Loan" asp-action="RequestLoan" method="get">
                 <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Request new loan" />
             </form>
         </div>
