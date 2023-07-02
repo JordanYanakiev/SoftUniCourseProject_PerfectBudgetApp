@@ -5,21 +5,17 @@ namespace PerfectBudgetApp.Models.Loans
 {
     public class LoanRequestViewModel
     {
-        [Required]
-        public Guid LoanId { get; set; }
-
+        public Guid Id { get; set; }
         [Required]
         [StringLength(LoanNameMaxLength, MinimumLength = LoanNameMinLength)]
         public string LoanName { get; set; } = null!;
-
         [Required]
         public decimal RequestedAmount { get; set; }
-
         [Required]
         [StringLength(LoanAskerNickNameMaxLength, MinimumLength = LoanAskerNickNameMinLength)]
         public string LoanAskerNickName { get; set; } = null!;
 
 
-        public Guid LoanTakerId { get; set; }
+        public string LoanTakerId { get; set; }
     }
 }

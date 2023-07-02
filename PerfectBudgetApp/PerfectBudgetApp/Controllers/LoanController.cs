@@ -16,15 +16,18 @@ namespace PerfectBudgetApp.Controllers
         }
 
 
-        public IActionResult RequestLoan()
+
+        public async Task<IActionResult> Loans()
         {
-            return View();
+            IEnumerable<LoanRequestViewModel> allLoans = await loanService.GetAllLoansAsync();
+            return View(allLoans);
         }
 
-
-        public IActionResult Loans()
+        public IActionResult RequestLoan()
         {
-            return View();
+            LoanRequestViewModel model = new LoanRequestViewModel();
+
+            return View(model);
         }
 
         [HttpPost]

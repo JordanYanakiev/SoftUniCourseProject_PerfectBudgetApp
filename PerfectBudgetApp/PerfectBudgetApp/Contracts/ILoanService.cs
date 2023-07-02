@@ -7,5 +7,6 @@ namespace PerfectBudgetApp.Contracts
     public interface ILoanService
     {
         Task RequestLoanAsync(LoanRequestViewModel model, string userId);
+        Task<IEnumerable<LoanRequestViewModel>> GetAllLoansAsync();
     }
 }
