@@ -38,13 +38,13 @@
                     @if (@loan.LoanTakerId != @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value)
                     {
                         <form class="input-group-sm" asp-controller="Loan" asp-action="ApproveLoan" asp-route-id="@loan.Id" method="get">
-                            <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-20 p-2 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Approve Loan" />
+                            <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-20 p-2 fw-bold" style="color:black; background-color:aqua;" type="submit" value="Approve Loan" />
                         </form>
                     }
                     else 
                     {
                                  <form class="input-group-sm" asp-controller="Loan" asp-action="ApproveLoan" asp-route-id="@loan.Id" method="get">
-                                <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-20 p-2 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Delete Loan" />
+                                <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-20 p-2 fw-bold" style="color:white; background-color:crimson;" type="submit" value="Delete Loan" />
                             </form>
                     }
                 </div>
