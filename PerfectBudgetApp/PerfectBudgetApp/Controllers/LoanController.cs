@@ -38,5 +38,25 @@ namespace PerfectBudgetApp.Controllers
 
             return RedirectToAction(nameof(Loans));
         }
+
+        public async Task<IActionResult> ApproveLoan(Guid id)
+        {
+            string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var model = await loanService.GetLoan(id, userId);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ApproveLoan(ApproveLoanViewModel model)
+        {
+            string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            //var model = await loanService.GetLoan(id, userId);
+            await loanService.ApproveLoanAsync(model, userId);
+
+            return View(model);
+        }
+
+
     }
 }

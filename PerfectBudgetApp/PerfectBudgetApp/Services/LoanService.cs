@@ -4,7 +4,7 @@ using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
 using PerfectBudgetApp.Data.Models;
 using PerfectBudgetApp.Models.Loans;
-using System.Runtime.Serialization;
+using System.Security.Claims;
 
 namespace PerfectBudgetApp.Services
 {
@@ -16,7 +16,6 @@ namespace PerfectBudgetApp.Services
         {
             budgetDbContext = _budgetDbContext;
         }
-
 
         public async Task RequestLoanAsync(LoanRequestViewModel model, string userId)
         {
@@ -49,18 +48,7 @@ namespace PerfectBudgetApp.Services
 
         public async Task<IEnumerable<LoanRequestViewModel>> GetAllLoansAsync()
         {
-            //IEnumerable<LoanRequestViewModel> allLoans;
-
-            var allLoans = await budgetDbContext.Debts
-                .Select(x => new LoanRequestViewModel()
-                {
-                    Id = x.Id,
-                    LoanName = x.Name,
-                    LoanAskerNickName = x.LoanRequester,
-                    RequestedAmount = x.Amount,
-                }).ToListAsync();
-
-            var allLoans2 = await budgetDbContext.DebtsReceivers
+            var allLoans = await budgetDbContext.DebtsReceivers
                 .Select(x => new LoanRequestViewModel()
                 {
                     LoanTakerId = x.DebtReceiverId,
@@ -70,8 +58,44 @@ namespace PerfectBudgetApp.Services
                     RequestedAmount = x.Debt.Amount
                 }).ToListAsync();
 
-            return allLoans2;
+            return allLoans;
         }
 
+        public async Task<ApproveLoanViewModel> GetLoan(Guid loanId, string userId)
+        {
+            //Get current loan
+            var loan = await budgetDbContext.Debts
+                                        .FirstOrDefaultAsync(x => x.Id == loanId);
+
+            //Get list of users' budgets
+            var list = await budgetDbContext.UsersBudgets
+                            .Where(x => x.UserId == userId)
+                            .Select(x => new Budget()
+                            {
+                                Name = x.Budget.Name,
+                                Amount = x.Budget.Amount
+                            })
+                            .ToListAsync();
+
+            var approveLoanViewModel = new ApproveLoanViewModel()
+            {
+                Id = loan.Id,
+                LoanName = loan.Name,
+                RequestedAmount = loan.Amount,
+                LoanAskerNickName = loan.LoanRequester,
+                Budgets = list
+            };
+
+            return approveLoanViewModel;
+        }
+
+        public async Task ApproveLoanAsync(ApproveLoanViewModel model, string userId)
+        {
+            //var debt = 
+
+
+
+            throw new NotImplementedException();
+        }
     }
 }

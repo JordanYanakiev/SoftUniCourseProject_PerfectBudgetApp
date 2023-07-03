@@ -1,0 +1,44 @@
+﻿@using PerfectBudgetApp.Models.Loans;
+
+@model ApproveLoanViewModel
+
+@{
+    ViewBag.Title = "Approve Loan";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <div class="mb-3">
+                <p>Loan asker: @Model.LoanAskerNickName</p>
+                <p>RequestedAmount: @Model.RequestedAmount</p>
+                <p>Loan purpouse: @Model.LoanName</p>
+                <label asp-for="@Model.LoanGiverNickName" class="form-label">Loan giver nickname</label>
+                <input asp-for="@Model.LoanGiverNickName" class="form-control" aria-required="true" />
+                <span asp-validation-for="LoanGiverNickName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Budgets" class="form-label">Budgets</label>
+                <select asp-for="@Model.Budgets" class="form-control">
+                    @foreach (var budget in @Model.Budgets)
+                    {
+                        <option value="@budget.Id"> @budget.Name - @budget.Amount</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.Budgets" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Approve Loan" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

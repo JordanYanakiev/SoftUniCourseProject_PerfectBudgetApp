@@ -8,5 +8,8 @@ namespace PerfectBudgetApp.Contracts
     {
         Task RequestLoanAsync(LoanRequestViewModel model, string userId);
         Task<IEnumerable<LoanRequestViewModel>> GetAllLoansAsync();
+        Task<ApproveLoanViewModel> GetLoan(Guid loanId, string userId);
+        Task ApproveLoanAsync(ApproveLoanViewModel model, string userId);
+
     }
 }
