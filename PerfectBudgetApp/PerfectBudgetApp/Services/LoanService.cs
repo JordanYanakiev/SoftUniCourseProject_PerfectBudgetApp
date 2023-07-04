@@ -3,6 +3,7 @@ using PerfectBudget.Data.Models;
 using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
 using PerfectBudgetApp.Data.Models;
+using PerfectBudgetApp.Models.Budgets;
 using PerfectBudgetApp.Models.Loans;
 using System.Security.Claims;
 
@@ -41,6 +42,8 @@ namespace PerfectBudgetApp.Services
                 DebtId = model.Id
             };
 
+            
+
             await budgetDbContext.DebtsReceivers.AddAsync(loanLoanAsker);
             await budgetDbContext.Debts.AddAsync(debt);
             await budgetDbContext.SaveChangesAsync();
@@ -70,8 +73,9 @@ namespace PerfectBudgetApp.Services
             //Get list of users' budgets
             var list = await budgetDbContext.UsersBudgets
                             .Where(x => x.UserId == userId)
-                            .Select(x => new Budget()
+                            .Select(x => new AddBudgetViewModel()
                             {
+                                Id = x.BudgetId,
                                 Name = x.Budget.Name,
                                 Amount = x.Budget.Amount
                             })
@@ -91,11 +95,68 @@ namespace PerfectBudgetApp.Services
 
         public async Task ApproveLoanAsync(ApproveLoanViewModel model, string userId)
         {
-            //var debt = 
+            var debt = await budgetDbContext.Debts
+                 .FirstOrDefaultAsync(x => x.Id == model.Id);
+
+            decimal releasedAmount = model.ReleasedAmount;
+
+            if (debt != null)
+            {
+                debt.LoanGiver = model.LoanGiverNickName;
+            }
+
+            var debtsReceivers = await budgetDbContext.DebtsReceivers
+                .FirstOrDefaultAsync(x => x.DebtId == model.Id);
+
+            var budget = await budgetDbContext.Budgets
+                         .FirstOrDefaultAsync(b => b.Id == model.BudgetId);
+            
+
+            //TO DO: Find the budget with the most money check if the amount there is suficient
+            //and deduct the amount from it
 
 
+            var debtIssuer = new DebtIssuer()
+            {
+                DebtId = model.Id,
+                Debt = debt,
+                DebtIssuerId = userId,
+                UserId = await budgetDbContext.Users
+                         .FirstOrDefaultAsync(x => x.Id == userId)
+            };
 
-            throw new NotImplementedException();
+            //await budgetDbContext.DebtsIssuers.AddAsync(debtIssuer);
+            //await budgetDbContext.SaveChangesAsync();
+
+        }
+
+        public async Task<IEnumerable<AddBudgetViewModel>> GetAllBudgetsForLoanRequest(LoanRequestViewModel model)
+        {
+            //Get list of users' budgets
+            var list = await budgetDbContext.UsersBudgets
+                            .Where(x => x.UserId == model.LoanTakerId)
+                            .Select(x => new AddBudgetViewModel()
+                            {
+                                Name = x.Budget.Name,
+                                Amount = x.Budget.Amount
+                            })
+                            .ToListAsync();
+
+            return list;
+        }
+        public async Task<IEnumerable<AddBudgetViewModel>> GetAllBudgetsForLoanRequest2(ApproveLoanViewModel model, string userId)
+        {
+            //Get list of users' budgets
+            var list = await budgetDbContext.UsersBudgets
+                            .Where(x => x.UserId == userId)
+                            .Select(x => new AddBudgetViewModel()
+                            {
+                                Name = x.Budget.Name,
+                                Amount = x.Budget.Amount
+                            })
+                            .ToListAsync();
+
+            return list;
         }
     }
 }

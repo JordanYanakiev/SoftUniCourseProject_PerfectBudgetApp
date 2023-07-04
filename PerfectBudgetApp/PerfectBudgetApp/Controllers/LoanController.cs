@@ -23,9 +23,14 @@ namespace PerfectBudgetApp.Controllers
             return View(allLoans);
         }
 
-        public IActionResult RequestLoan()
+        public async Task<IActionResult> RequestLoan()
         {
             LoanRequestViewModel model = new LoanRequestViewModel();
+
+
+
+            model.LoanTakerId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            model.Budgets = await loanService.GetAllBudgetsForLoanRequest(model);
 
             return View(model);
         }
@@ -33,6 +38,12 @@ namespace PerfectBudgetApp.Controllers
         [HttpPost]
         public async Task<IActionResult> RequestLoan(LoanRequestViewModel model)
         {
+
+            if (ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             await loanService.RequestLoanAsync(model, userId);
 
@@ -51,10 +62,10 @@ namespace PerfectBudgetApp.Controllers
         public async Task<IActionResult> ApproveLoan(ApproveLoanViewModel model)
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            //var model = await loanService.GetLoan(id, userId);
+            model.Budgets = await loanService.GetAllBudgetsForLoanRequest2(model, userId);
             await loanService.ApproveLoanAsync(model, userId);
 
-            return View(model);
+            return RedirectToAction(nameof(Loans));
         }
 
 

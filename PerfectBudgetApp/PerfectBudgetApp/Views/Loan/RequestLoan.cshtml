@@ -28,6 +28,16 @@
                 <span asp-validation-for="LoanAskerNickName" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                <label asp-for="@Model.Budgets" class="form-label">Budgets</label>
+                <select asp-for="@Model.Budgets" class="form-control">
+                    @foreach (var budget in @Model.Budgets)
+                    {
+                        <option value="@budget.Id">@budget.Amount</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.Budgets" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="Request Loan" />
             </div>
         </form>
