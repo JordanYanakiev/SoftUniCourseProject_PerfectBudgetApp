@@ -54,14 +54,14 @@
                     }
                 </select>
                 <span asp-validation-for="@Model.Budgets" class="text-danger"></span>*@
-                <label asp-for="@Model.Budgets" class="form-label">Budgets</label>
-                <select asp-for="@Model.Budgets" name="budgets" id="budgets">
+                <label asp-for="@Model.BudgetId" class="form-label">Budgets</label>
+                <select asp-for="@Model.BudgetId" class="form-control">
                     @foreach (var budget in @Model.Budgets)
                     {
                         <option value="@budget.Id"> @budget.Name - @budget.Amount</option>
                     }                    
                 </select>
-                <span asp-validation-for="@Model.Budgets" class="text-danger"></span>
+                <span asp-validation-for="@Model.BudgetId" class="text-danger"></span>
 
             </div>
             
