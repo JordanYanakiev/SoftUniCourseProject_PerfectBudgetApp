@@ -105,7 +105,7 @@ namespace PerfectBudgetApp.Services
                 debt.LoanGiver = model.LoanGiverNickName;
             }
 
-            var debtsReceivers = await budgetDbContext.DebtsReceivers
+            var debtsReceiver = await budgetDbContext.DebtsReceivers
                 .FirstOrDefaultAsync(x => x.DebtId == model.Id);
 
             var budget = await budgetDbContext.Budgets
@@ -125,7 +125,21 @@ namespace PerfectBudgetApp.Services
                          .FirstOrDefaultAsync(x => x.Id == userId)
             };
 
-            //await budgetDbContext.DebtsIssuers.AddAsync(debtIssuer);
+            var allDebtRequesterBudgets = await budgetDbContext.UsersBudgets
+                                        .Where(x => x.UserId == debtsReceiver.DebtReceiverId)
+                                        .Select(x => new
+                                        {
+                                            User = x.User,
+                                            UserId = x.UserId,
+                                            Budget = x.Budget,
+                                            BudgetId = x.BudgetId 
+                                        })
+                                        .OrderBy(x => x.Budget.Amount)
+                                        .ToListAsync();
+
+            allDebtRequesterBudgets.OrderByDescending(x => x.Budget.Amount);
+
+            await budgetDbContext.DebtsIssuers.AddAsync(debtIssuer);
             //await budgetDbContext.SaveChangesAsync();
 
         }
