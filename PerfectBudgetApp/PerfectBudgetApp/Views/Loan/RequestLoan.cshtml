@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-        <form method="post">
+        <form class="input-group-sm" method="post">
             <div class="mb-3">
                 <label asp-for="@Model.LoanName" class="form-label">Name</label>
                 <input asp-for="@Model.LoanName" class="form-control" aria-required="true" />
@@ -27,18 +27,10 @@
                 <input asp-for="@Model.LoanAskerNickName" class="form-control" aria-required="true" />
                 <span asp-validation-for="LoanAskerNickName" class="text-danger"></span>
             </div>
+         
+
             <div class="mb-3">
-                <label asp-for="@Model.Budgets" class="form-label">Budgets</label>
-                <select asp-for="@Model.Budgets" class="form-control">
-                    @foreach (var budget in @Model.Budgets)
-                    {
-                        <option value="@budget.Id">@budget.Amount</option>
-                    }
-                </select>
-                <span asp-validation-for="@Model.Budgets" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Request Loan" />
+                   <input class="btn btn-primary" type="submit" value="Request Loan" />
             </div>
         </form>
     </div>

@@ -30,7 +30,7 @@ namespace PerfectBudgetApp.Controllers
 
 
             model.LoanTakerId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            model.Budgets = await loanService.GetAllBudgetsForLoanRequest(model);
+            //model.Budgets = await loanService.GetAllBudgetsForLoanRequest(model);
 
             return View(model);
         }
@@ -39,10 +39,6 @@ namespace PerfectBudgetApp.Controllers
         public async Task<IActionResult> RequestLoan(LoanRequestViewModel model)
         {
 
-            if (ModelState.IsValid == false)
-            {
-                return View(model);
-            }
 
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             await loanService.RequestLoanAsync(model, userId);

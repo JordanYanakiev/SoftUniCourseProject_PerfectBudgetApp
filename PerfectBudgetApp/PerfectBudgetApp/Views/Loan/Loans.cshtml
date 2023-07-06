@@ -35,6 +35,7 @@
                 </div>
                 <div class="col-4 col-md-2" style=" text-align: right; padding-top:1px;">
 
+                    
                     @if (@loan.LoanTakerId != @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value)
                     {
                         <form class="input-group-sm" asp-controller="Loan" asp-action="ApproveLoan" asp-route-id="@loan.Id" method="get">

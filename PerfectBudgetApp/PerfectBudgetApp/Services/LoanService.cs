@@ -5,6 +5,7 @@ using PerfectBudgetApp.Data;
 using PerfectBudgetApp.Data.Models;
 using PerfectBudgetApp.Models.Budgets;
 using PerfectBudgetApp.Models.Loans;
+using System.Linq;
 using System.Security.Claims;
 
 namespace PerfectBudgetApp.Services
@@ -61,6 +62,28 @@ namespace PerfectBudgetApp.Services
                     RequestedAmount = x.Debt.Amount
                 }).ToListAsync();
 
+            var allApprovedloans = await budgetDbContext.DebtsIssuers
+                .Select(x => new DebtIssuer
+                {
+                    DebtId = x.DebtId,
+                    Debt = x.Debt,
+                    DebtIssuerId = x.DebtIssuerId,
+                    UserId = x.UserId
+                }).ToListAsync();
+
+            int counter = 0;
+
+            for(int i = 0; i < allLoans.Count; i++)
+            {
+                if (allApprovedloans.Any(x => x.DebtId == allLoans[i].Id))
+                {
+                    allLoans.Remove(allLoans[i]);
+                    i = -1;
+                }
+            }
+
+            await budgetDbContext.SaveChangesAsync();
+
             return allLoans;
         }
 
@@ -108,7 +131,7 @@ namespace PerfectBudgetApp.Services
             var debtsReceiver = await budgetDbContext.DebtsReceivers
                 .FirstOrDefaultAsync(x => x.DebtId == model.Id);
 
-            var budget = await budgetDbContext.Budgets
+            var loanGiverBudget = await budgetDbContext.Budgets
                          .FirstOrDefaultAsync(b => b.Id == model.BudgetId);
             
 
@@ -139,8 +162,12 @@ namespace PerfectBudgetApp.Services
 
             allDebtRequesterBudgets.OrderByDescending(x => x.Budget.Amount);
 
+            allDebtRequesterBudgets[0].Budget.Amount += model.ReleasedAmount;
+            loanGiverBudget.Amount -= model.ReleasedAmount;
+
+
             await budgetDbContext.DebtsIssuers.AddAsync(debtIssuer);
-            //await budgetDbContext.SaveChangesAsync();
+            await budgetDbContext.SaveChangesAsync();
 
         }
 
