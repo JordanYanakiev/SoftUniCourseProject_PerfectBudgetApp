@@ -65,8 +65,10 @@ namespace PerfectBudgetApp.Controllers
         }
 
 
-        public async Task<IActionResult> DeleteLoan()
+        public async Task<IActionResult> DeleteLoan(ApproveLoanViewModel model)
         {
+            string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            await loanService.DeleteLoanAsync(model.Id, userId);
 
 
             return RedirectToAction(nameof(Loans));

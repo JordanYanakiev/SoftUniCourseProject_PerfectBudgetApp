@@ -200,13 +200,18 @@ namespace PerfectBudgetApp.Services
             return list;
         }
 
-        public Task DeleteLoanAsync(Guid modelId, string userId)
+        public async Task DeleteLoanAsync(Guid modelId, string userId)
         {
 
+            var debtLoanTaker = await budgetDbContext.DebtsReceivers
+                                .FirstOrDefaultAsync(x => x.DebtId == modelId);
 
+            var debt = await budgetDbContext.Debts
+                                .FirstOrDefaultAsync(x => x.Id == modelId);
 
-
-            throw new NotImplementedException();
+            budgetDbContext.Debts.Remove(debt);
+            budgetDbContext.DebtsReceivers.Remove(debtLoanTaker);
+            budgetDbContext.SaveChanges();
         }
     }
 }
