@@ -65,5 +65,13 @@ namespace PerfectBudgetApp.Controllers
         }
 
 
+        public async Task<IActionResult> DeleteLoan()
+        {
+
+
+            return RedirectToAction(nameof(Loans));
+        }
+
+
     }
 }

@@ -199,5 +199,14 @@ namespace PerfectBudgetApp.Services
 
             return list;
         }
+
+        public Task DeleteLoanAsync(Guid modelId, string userId)
+        {
+
+
+
+
+            throw new NotImplementedException();
+        }
     }
 }
