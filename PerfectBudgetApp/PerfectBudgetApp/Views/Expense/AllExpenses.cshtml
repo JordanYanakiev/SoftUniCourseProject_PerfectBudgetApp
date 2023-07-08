@@ -5,8 +5,31 @@
     ViewBag.Title = "All Expenses";
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
+
+<div class="container" style=" margin-bottom:0px;  vertical-align: middle;">
+      <div class="row justify-content-between">
+        <div class="col-2" style=" vertical-align: middle;">
+            <h1> Expenses </h1style>
+        </div>
+        <div class="col-2" style=" vertical-align: middle;">
+            <form class="input-group-sm" asp-controller="Expense" asp-action="CreateExpense">
+                <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Add Expense" />
+            </form>
+        </div>
+      </div>
+</div>
+<hr style="margin-top:0px;" />
+
+
+
+
+
+
+@*<h2 class="text-center">@ViewBag.Title</h2>
+
+<form class="input-group-sm" asp-controller="Expense" asp-action="CreateExpense">
+    <input type="submit" value="Add Expense" class="fs-6 btn btn-success mb-3 p-2" />
+</form>*@
 
 @*<div class="text-center row">
     @foreach (var book in Model)

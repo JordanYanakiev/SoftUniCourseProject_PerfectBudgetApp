@@ -319,6 +319,21 @@ namespace PerfectBudgetApp.Data.Migrations
                     b.ToTable("DebtsReceivers");
                 });
 
+            modelBuilder.Entity("PerfectBudget.Data.Models.ExpenseCategory", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ExpenseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CategoryId", "ExpenseId");
+
+                    b.HasIndex("ExpenseId");
+
+                    b.ToTable("ExpenseCategory");
+                });
+
             modelBuilder.Entity("PerfectBudgetApp.Data.Models.Budget", b =>
                 {
                     b.Property<Guid>("Id")
@@ -436,11 +451,6 @@ namespace PerfectBudgetApp.Data.Migrations
 
                     b.Property<DateTime>("DateOfIssuedExpense")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(35)
-                        .HasColumnType("nvarchar(35)");
 
                     b.HasKey("Id");
 
@@ -583,6 +593,25 @@ namespace PerfectBudgetApp.Data.Migrations
                     b.Navigation("UserId");
                 });
 
+            modelBuilder.Entity("PerfectBudget.Data.Models.ExpenseCategory", b =>
+                {
+                    b.HasOne("PerfectBudget.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PerfectBudgetApp.Data.Models.Expense", "Expense")
+                        .WithMany()
+                        .HasForeignKey("ExpenseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Expense");
+                });
+
             modelBuilder.Entity("PerfectBudgetApp.Data.Models.BudgetExpense", b =>
                 {
                     b.HasOne("PerfectBudgetApp.Data.Models.Budget", "Budget")
@@ -592,9 +621,9 @@ namespace PerfectBudgetApp.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("PerfectBudgetApp.Data.Models.Expense", "Expense")
-                        .WithMany("BudgetsExpenses")
+                        .WithMany()
                         .HasForeignKey("ExpenseId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Budget");
@@ -676,7 +705,7 @@ namespace PerfectBudgetApp.Data.Migrations
             modelBuilder.Entity("PerfectBudgetApp.Data.Models.UserExpense", b =>
                 {
                     b.HasOne("PerfectBudgetApp.Data.Models.Expense", "Expense")
-                        .WithMany()
+                        .WithMany("BudgetsExpenses")
                         .HasForeignKey("ExpenseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

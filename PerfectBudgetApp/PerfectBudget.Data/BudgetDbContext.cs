@@ -49,6 +49,9 @@ namespace PerfectBudgetApp.Data
 
             builder.Entity<DebtPaymentDebt>()
                 .HasKey(dpd => new { dpd.DebtInstallmentId, dpd.DebtId });
+
+            builder.Entity<ExpenseCategory>()
+                .HasKey(c => new { c.CategoryId, c.ExpenseId });
             #endregion
 
             #region Set precision to decimals
@@ -78,10 +81,11 @@ namespace PerfectBudgetApp.Data
                 .WithMany(b => b.BudgetsExpenses)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<BudgetExpense>()
-                .HasOne(b => b.Expense)
-                .WithMany(b => b.BudgetsExpenses)
-                .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.Entity<BudgetExpense>()
+            //    .HasOne(b => b.Expense)
+            //    .WithMany(b => b.BudgetsExpenses)
+            //    .OnDelete(DeleteBehavior.Restrict);
             #endregion
 
 
