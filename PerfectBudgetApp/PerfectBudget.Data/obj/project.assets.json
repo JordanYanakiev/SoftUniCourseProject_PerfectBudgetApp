@@ -864,6 +864,16 @@
             "rid": "win"
           }
         }
+      },
+      "PerfectBudget.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/PerfectBudget.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PerfectBudget.Common.dll": {}
+        }
       }
     }
   },
@@ -2176,6 +2186,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "PerfectBudget.Common/1.0.0": {
+      "type": "project",
+      "path": "../PerfectBudget.Common/PerfectBudget.Common.csproj",
+      "msbuildProject": "../PerfectBudget.Common/PerfectBudget.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2183,7 +2198,8 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.18",
       "Microsoft.EntityFrameworkCore >= 6.0.18",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.18",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.18"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.18",
+      "PerfectBudget.Common >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2217,7 +2233,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj": {
+              "projectPath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

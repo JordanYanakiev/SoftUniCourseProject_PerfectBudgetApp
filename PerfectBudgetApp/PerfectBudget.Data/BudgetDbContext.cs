@@ -24,6 +24,7 @@ namespace PerfectBudgetApp.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            #region Set foreign keys
             //Set foreign keys
 
             builder.Entity<DebtReceiver>()
@@ -46,7 +47,9 @@ namespace PerfectBudgetApp.Data
 
             builder.Entity<DebtPaymentDebt>()
                 .HasKey(dpd => new { dpd.DebtInstallmentId, dpd.DebtId });
+            #endregion
 
+            #region Set precision to decimals
             //Set precision to decimals
 
             builder.Entity<Budget>()
@@ -64,7 +67,9 @@ namespace PerfectBudgetApp.Data
             builder.Entity<Expense>()
                 .Property(x => x.Amount)
                 .HasPrecision(18, 2);
+            #endregion
 
+            #region Set delete behavior for BudgetExpense
             //Set delete behavior
             builder.Entity<BudgetExpense>()
                 .HasOne(b => b.Budget)
@@ -75,6 +80,10 @@ namespace PerfectBudgetApp.Data
                 .HasOne(b => b.Expense)
                 .WithMany(b => b.BudgetsExpenses)
                 .OnDelete(DeleteBehavior.Restrict);
+            #endregion
+
+
+
 
             base.OnModelCreating(builder);
         }

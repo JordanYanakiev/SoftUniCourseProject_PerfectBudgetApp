@@ -11,5 +11,8 @@
         public const int LoanAskerNickNameMaxLength = 55;
         public const int LoanAskerNickNameMinLength = 5;
 
+        public const int CategoryNameMaxLength = 55;
+        public const int CategoryNameMinLength = 5;
+
     }
 }

@@ -90,7 +90,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj": {
+                "projectPath": "C:\\Users\\Johny\\Documents\\GitHub\\SoftUniCourseProject_PerfectBudgetApp\\PerfectBudgetApp\\PerfectBudget.Common\\PerfectBudget.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
