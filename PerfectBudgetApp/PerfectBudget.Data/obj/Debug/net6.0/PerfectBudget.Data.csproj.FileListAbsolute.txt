@@ -40,3 +40,6 @@ C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBud
 C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.pdb
 C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.genruntimeconfig.cache
 C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\ref\PerfectBudget.Data.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Common.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Common.pdb
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.csproj.CopyComplete

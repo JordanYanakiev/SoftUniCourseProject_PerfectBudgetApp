@@ -2582,7 +2582,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.18",
           "Microsoft.EntityFrameworkCore": "6.0.18",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.18"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.18",
+          "PerfectBudget.Common": "1.0.0"
         },
         "runtime": {
           "PerfectBudget.Data.dll": {}

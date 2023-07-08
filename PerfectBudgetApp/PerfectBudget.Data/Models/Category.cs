@@ -11,7 +11,7 @@ namespace PerfectBudget.Data.Models
     public class Category
     {
         [Key]
-        int Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(CategoryNameMaxLength)]

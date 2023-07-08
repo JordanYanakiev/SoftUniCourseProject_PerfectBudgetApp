@@ -21,6 +21,8 @@ namespace PerfectBudgetApp.Data
         public DbSet<DebtIssuer> DebtsIssuers { get; set; }
         public DbSet<DebtReceiver> DebtsReceivers { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -83,6 +85,54 @@ namespace PerfectBudgetApp.Data
             #endregion
 
 
+            #region Enter Default Categories in Category Entity
+            builder.Entity<Category>()
+                .HasData(new Category()
+                {
+                    Id = 1,
+                    Name = "Groceries"
+                },
+                new Category()
+                {
+                    Id = 2, 
+                    Name = "Utilities"
+                },
+                new Category()
+                {
+                    Id = 3,
+                    Name = "Car"
+                },
+                new Category()
+                {
+                    Id = 4,
+                    Name = "Loan"
+                },
+                new Category()
+                {
+                    Id = 5,
+                    Name = "Internet"
+                },
+                new Category() 
+                {
+                    Id = 6,
+                    Name = "Mobile"
+                },
+                new Category()
+                {
+                    Id = 7,
+                    Name = "Leasing"
+                },
+                new Category()
+                {
+                    Id = 8,
+                    Name = "Electricity"
+                },
+                new Category()
+                {
+                    Id = 9,
+                    Name = "Water"
+                });
+            #endregion
 
 
             base.OnModelCreating(builder);
