@@ -1,6 +1,7 @@
 ﻿
 using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
+using PerfectBudgetApp.Models.Expenses;
 
 namespace PerfectBudgetApp.Services
 {
@@ -13,12 +14,12 @@ namespace PerfectBudgetApp.Services
             budgetDbContext = _budgetDbContext;
         }
 
+        public Task<IEnumerable<CategoryViewModel>> GetAllCategoriesAsync()
+        {
 
 
 
-
-
-
-
+            throw new NotImplementedException();
+        }
     }
 }

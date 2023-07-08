@@ -1,10 +1,14 @@
-﻿using PerfectBudgetApp.Contracts;
+﻿using Microsoft.Build.Framework;
+using PerfectBudget.Data.Models;
+using PerfectBudgetApp.Contracts;
 
 namespace PerfectBudgetApp.Models.Expenses
 {
     public class AllExpensesViewModel
     {
-      
-
+        [Required]
+        public Guid ExpenseId { get; set; }
+        [Required]
+        public decimal Amount { get; set; }
     }
 }

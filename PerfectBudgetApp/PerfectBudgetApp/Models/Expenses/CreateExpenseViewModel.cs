@@ -1,4 +1,5 @@
 ﻿using PerfectBudget.Data.Models;
+using PerfectBudgetApp.Models.Budgets;
 using System.ComponentModel.DataAnnotations;
 
 namespace PerfectBudgetApp.Models.Expenses
@@ -12,9 +13,12 @@ namespace PerfectBudgetApp.Models.Expenses
         public decimal ExpenceAmount { get; set; }
 
         [Required]
-        public Category Category { get; set; } = null!;
-
-        [Required]
         public DateTime DateOfExpense { get; set; }
+
+        public Guid BudgetId { get; set; }
+        public IEnumerable<AddBudgetViewModel> Budgets { get; set; } = new List<AddBudgetViewModel>();
+
+        public int CategoryId { get; set; }
+        public IEnumerable<CategoryViewModel> Categories { get; set; } = new List<CategoryViewModel>();
     }
 }
