@@ -446,8 +446,11 @@ namespace PerfectBudgetApp.Data.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("BudgetId")
+                    b.Property<Guid>("BudgetId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfIssuedExpense")
                         .HasColumnType("datetime2");
@@ -455,6 +458,8 @@ namespace PerfectBudgetApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BudgetId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Expenses");
                 });
@@ -659,9 +664,21 @@ namespace PerfectBudgetApp.Data.Migrations
 
             modelBuilder.Entity("PerfectBudgetApp.Data.Models.Expense", b =>
                 {
-                    b.HasOne("PerfectBudgetApp.Data.Models.Budget", null)
+                    b.HasOne("PerfectBudgetApp.Data.Models.Budget", "Budget")
                         .WithMany("BudgetExpenseList")
-                        .HasForeignKey("BudgetId");
+                        .HasForeignKey("BudgetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PerfectBudget.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Budget");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("PerfectBudgetApp.Data.Models.UserBudget", b =>

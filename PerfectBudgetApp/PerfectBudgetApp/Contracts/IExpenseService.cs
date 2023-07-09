@@ -6,6 +6,6 @@ namespace PerfectBudgetApp.Contracts
     {
         Task <CreateExpenseViewModel> GetAllCategoriesAsync();
 
-
+        Task CreateExpense(CreateExpenseViewModel model, string userId);
     }
 }

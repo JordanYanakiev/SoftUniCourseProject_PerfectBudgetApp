@@ -2,6 +2,7 @@
 using PerfectBudget.Data.Models;
 using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
+using PerfectBudgetApp.Data.Models;
 using PerfectBudgetApp.Models.Expenses;
 
 namespace PerfectBudgetApp.Services
@@ -13,6 +14,19 @@ namespace PerfectBudgetApp.Services
         public ExpenseService(BudgetDbContext _budgetDbContext)
         {
             budgetDbContext = _budgetDbContext;
+        }
+
+        public Task CreateExpense(CreateExpenseViewModel model, string userId)
+        {
+            var expense = new Expense()
+            {
+                Id = new Guid(),
+                CategoryId = model.CategoryId
+                
+                //TO DO: create dropdown menu for Budgets in CreateExpenseViewModel!!!!!!!
+
+            };
+            throw new NotImplementedException();
         }
 
         public async Task <CreateExpenseViewModel> GetAllCategoriesAsync()

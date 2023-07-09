@@ -4,7 +4,7 @@ using PerfectBudgetApp.Models.Expenses;
 
 namespace PerfectBudgetApp.Controllers
 {
-    public class ExpenseController : Controller
+    public class ExpenseController : BaseController
     {
         private readonly IExpenseService expenseService;
 
@@ -25,10 +25,18 @@ namespace PerfectBudgetApp.Controllers
         public async Task<IActionResult> CreateExpense()
         {
             CreateExpenseViewModel model = await expenseService.GetAllCategoriesAsync();
-
-
-
             return View(model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateExpense(CreateExpenseViewModel model)
+        {
+            string userId = GetUserId();
+
+
+            return RedirectToAction(nameof(AllExpenses));
+        }
+
+
     }
 }

@@ -1,0 +1,17 @@
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Data.deps.json
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Data.runtimeconfig.json
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Data.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Data.pdb
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Common.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\bin\Debug\net6.0\PerfectBudget.Common.pdb
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.csproj.AssemblyReference.cache
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.AssemblyInfoInputs.cache
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.AssemblyInfo.cs
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.csproj.CoreCompileInputs.cache
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.csproj.CopyComplete
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\refint\PerfectBudget.Data.dll
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.pdb
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\PerfectBudget.Data.genruntimeconfig.cache
+C:\Users\Johny\Documents\GitHub\SoftUniCourseProject_PerfectBudgetApp\PerfectBudgetApp\PerfectBudget.Data\obj\Debug\net6.0\ref\PerfectBudget.Data.dll

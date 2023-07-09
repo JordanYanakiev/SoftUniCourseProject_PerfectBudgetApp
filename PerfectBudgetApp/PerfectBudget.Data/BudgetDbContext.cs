@@ -88,7 +88,6 @@ namespace PerfectBudgetApp.Data
             //    .OnDelete(DeleteBehavior.Restrict);
             #endregion
 
-
             #region Enter Default Categories in Category Entity
             builder.Entity<Category>()
                 .HasData(new Category()
