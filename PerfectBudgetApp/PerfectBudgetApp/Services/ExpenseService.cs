@@ -1,4 +1,5 @@
 ﻿
+using PerfectBudget.Data.Models;
 using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
 using PerfectBudgetApp.Models.Expenses;
@@ -14,12 +15,35 @@ namespace PerfectBudgetApp.Services
             budgetDbContext = _budgetDbContext;
         }
 
-        public Task<IEnumerable<CategoryViewModel>> GetAllCategoriesAsync()
+        public async Task <CreateExpenseViewModel> GetAllCategoriesAsync()
         {
+            var categories = budgetDbContext.Categories
+                            .Select(c => new CategoryViewModel()
+                            {
+                                CategoryName = c.Name
+                            }).ToList();
 
+            var model = new CreateExpenseViewModel()
+            {
+                Categories = categories
+            };
 
-
-            throw new NotImplementedException();
+            return model;
         }
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
 }

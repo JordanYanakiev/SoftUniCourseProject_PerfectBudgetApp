@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PerfectBudgetApp.Contracts;
+using PerfectBudgetApp.Models.Expenses;
 
 namespace PerfectBudgetApp.Controllers
 {
@@ -21,9 +22,13 @@ namespace PerfectBudgetApp.Controllers
         }
 
 
-        public IActionResult CreateExpense()
+        public async Task<IActionResult> CreateExpense()
         {
-            return View();
+            CreateExpenseViewModel model = await expenseService.GetAllCategoriesAsync();
+
+
+
+            return View(model);
         }
     }
 }

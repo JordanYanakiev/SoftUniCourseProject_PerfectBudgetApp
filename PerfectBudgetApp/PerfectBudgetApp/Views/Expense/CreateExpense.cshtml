@@ -15,10 +15,10 @@
             <div class="mb-3">
                 <label asp-for="@Model.CategoryId" class="form-label">Categories</label>
                 <select asp-for="@Model.CategoryId" class="form-control">
-                 @*   @foreach (var category in @Model.Categories)
+                    @foreach (var category in @Model.Categories)
                     {
                       <option value="@category.Id"> @category.CategoryName </option>
-                    }*@
+                    }
                 </select>
                 <span asp-validation-for="@Model.CategoryId" class="text-danger"></span>
             </div>
