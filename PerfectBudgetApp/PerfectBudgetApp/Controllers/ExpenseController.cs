@@ -18,10 +18,10 @@ namespace PerfectBudgetApp.Controllers
 
 
 
-        public IActionResult AllExpenses()
+        public async Task<IActionResult> AllExpenses()
         {
             string userId = GetUserId();
-            IEnumerable<AllExpensesViewModel> model = new List<AllExpensesViewModel>();
+            IEnumerable<AllExpensesViewModel> model = await expenseService.GetAllExpensesAsync(userId);
 
             return View(model);
         }

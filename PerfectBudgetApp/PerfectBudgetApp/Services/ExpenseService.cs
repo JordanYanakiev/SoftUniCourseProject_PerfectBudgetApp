@@ -21,6 +21,7 @@ namespace PerfectBudgetApp.Services
         //Create new expense
         public async Task CreateExpense(CreateExpenseViewModel model, string userId)
         {
+            //Create new expense
             var expense = new Expense()
             {
                 Id = Guid.NewGuid(),
@@ -32,6 +33,7 @@ namespace PerfectBudgetApp.Services
                 Category = await budgetDbContext.Categories.FirstOrDefaultAsync(c => c.Id == model.CategoryId)
             };
 
+            //Create new record for UsersExpenses
             var userExpense = new UserExpense()
             {
                 UserId = userId,
@@ -40,9 +42,11 @@ namespace PerfectBudgetApp.Services
                 ExpenseId = expense.Id
             };
 
+            //Update budget with the amount of the expense
             var budget = budgetDbContext.Budgets.FirstOrDefault(b => b.Id == expense.BudgetId);
             budget.Amount -= model.ExpenceAmount;
 
+            //Update database
             budgetDbContext.Expenses.Add(expense);
             budgetDbContext.UsersExpenses.Add(userExpense);
             budgetDbContext.Budgets.Update(budget);
@@ -77,9 +81,22 @@ namespace PerfectBudgetApp.Services
             return model;
         }
 
-        public Task<IEnumerable<AllExpensesViewModel>> GetAllExpensesAsync(string userId)
+        //Get all expenses for the main page with expenses
+        public async Task<IEnumerable<AllExpensesViewModel>> GetAllExpensesAsync(string userId)
         {
-            throw new NotImplementedException();
+
+            var allExpenses = await budgetDbContext.UsersExpenses
+                              .Where(e => e.UserId == userId)
+                              .Select(e => new AllExpensesViewModel()
+                              {
+                                  ExpenseId = e.ExpenseId,
+                                  Amount = e.Expense.Amount,
+                                  Category = e.Expense.Category.Name,
+                                  DateOfExpense = e.Expense.DateOfIssuedExpense
+                              }).ToListAsync();
+            allExpenses.OrderBy(e => e.DateOfExpense);
+
+            return allExpenses;
         }
     }
 }
