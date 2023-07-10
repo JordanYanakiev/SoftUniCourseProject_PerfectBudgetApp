@@ -20,7 +20,10 @@ namespace PerfectBudgetApp.Controllers
 
         public IActionResult AllExpenses()
         {
-            return View();
+            string userId = GetUserId();
+            IEnumerable<AllExpensesViewModel> model = new List<AllExpensesViewModel>();
+
+            return View(model);
         }
 
         [HttpGet]

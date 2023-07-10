@@ -18,6 +18,7 @@ namespace PerfectBudgetApp.Services
             budgetDbContext = _budgetDbContext;
         }
 
+        //Create new expense
         public async Task CreateExpense(CreateExpenseViewModel model, string userId)
         {
             var expense = new Expense()
@@ -48,6 +49,7 @@ namespace PerfectBudgetApp.Services
             budgetDbContext.SaveChanges();        
         }
 
+        //Get all budgets for the current user and all categories for the expenses
         public async Task <CreateExpenseViewModel> GetAllCategoriesAsync(string userId)
         {
             var categories = budgetDbContext.Categories
@@ -75,19 +77,9 @@ namespace PerfectBudgetApp.Services
             return model;
         }
 
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        public Task<IEnumerable<AllExpensesViewModel>> GetAllExpensesAsync(string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
