@@ -11,13 +11,13 @@
 
 <div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-        <form method="post">
+        <form class="input-group-sm" method="post">
             <div class="mb-3">
                 <label asp-for="@Model.CategoryId" class="form-label">Categories</label>
                 <select asp-for="@Model.CategoryId" class="form-control">
                     @foreach (var category in @Model.Categories)
                     {
-                      <option value="@category.Id"> @category.CategoryName </option>
+                        <option value="@category.Id"> @category.CategoryName </option>
                     }
                 </select>
                 <span asp-validation-for="@Model.CategoryId" class="text-danger"></span>
@@ -26,6 +26,16 @@
                 <label asp-for="@Model.ExpenceAmount" class="form-label">Amount</label>
                 <input asp-for="@Model.ExpenceAmount" class="form-control" aria-required="true" />
                 <span asp-validation-for="ExpenceAmount" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.BudgetId" class="form-label">Select budget</label>
+                <select asp-for="@Model.BudgetId" class="form-control">
+                    @foreach (var budget in @Model.Budgets)
+                    {
+                        <option value="@budget.Id"> @budget.Name - @budget.Amount</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.BudgetId" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.DateOfExpense" class="form-label">Date</label>

@@ -4,7 +4,7 @@ namespace PerfectBudgetApp.Contracts
 {
     public interface IExpenseService
     {
-        Task <CreateExpenseViewModel> GetAllCategoriesAsync();
+        Task <CreateExpenseViewModel> GetAllCategoriesAsync(string userId);
 
         Task CreateExpense(CreateExpenseViewModel model, string userId);
     }

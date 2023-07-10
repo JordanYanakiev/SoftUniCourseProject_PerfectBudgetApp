@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PerfectBudgetApp.Contracts;
+using PerfectBudgetApp.Data.Models;
+using PerfectBudgetApp.Models.Budgets;
 using PerfectBudgetApp.Models.Expenses;
 
 namespace PerfectBudgetApp.Controllers
@@ -21,10 +23,11 @@ namespace PerfectBudgetApp.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public async Task<IActionResult> CreateExpense()
         {
-            CreateExpenseViewModel model = await expenseService.GetAllCategoriesAsync();
+            string userId = GetUserId();
+            CreateExpenseViewModel model = await expenseService.GetAllCategoriesAsync(userId);
             return View(model);
         }
 
@@ -32,6 +35,11 @@ namespace PerfectBudgetApp.Controllers
         public async Task<IActionResult> CreateExpense(CreateExpenseViewModel model)
         {
             string userId = GetUserId();
+
+            await expenseService.CreateExpense(model, userId);
+            
+
+
 
 
             return RedirectToAction(nameof(AllExpenses));
