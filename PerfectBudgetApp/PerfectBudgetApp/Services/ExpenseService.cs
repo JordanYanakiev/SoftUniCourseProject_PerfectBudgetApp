@@ -29,6 +29,7 @@ namespace PerfectBudgetApp.Services
                 Amount = model.ExpenceAmount,
                 DateOfIssuedExpense = model.DateOfExpense,
                 BudgetId = model.BudgetId,
+                Description = model.Description,
                 Budget = await budgetDbContext.Budgets.FirstOrDefaultAsync(b => b.Id == model.BudgetId),
                 Category = await budgetDbContext.Categories.FirstOrDefaultAsync(c => c.Id == model.CategoryId)
             };
@@ -92,7 +93,8 @@ namespace PerfectBudgetApp.Services
                                   ExpenseId = e.ExpenseId,
                                   Amount = e.Expense.Amount,
                                   Category = e.Expense.Category.Name,
-                                  DateOfExpense = e.Expense.DateOfIssuedExpense
+                                  DateOfExpense = e.Expense.DateOfIssuedExpense,
+                                  Description = e.Expense.Description
                               }).ToListAsync();
             var allExpensesSorted = allExpenses.OrderByDescending(e => e.DateOfExpense);
 

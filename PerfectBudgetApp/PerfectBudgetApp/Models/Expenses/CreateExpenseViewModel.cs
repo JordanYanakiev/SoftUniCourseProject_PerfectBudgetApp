@@ -1,6 +1,7 @@
 ﻿using PerfectBudget.Data.Models;
 using PerfectBudgetApp.Models.Budgets;
 using System.ComponentModel.DataAnnotations;
+using static PerfectBudget.Common.DataConstants;
 
 namespace PerfectBudgetApp.Models.Expenses
 {
@@ -13,7 +14,11 @@ namespace PerfectBudgetApp.Models.Expenses
         public decimal ExpenceAmount { get; set; }
 
         [Required]
-        public DateTime DateOfExpense { get; set; }
+        public DateTime DateOfExpense { get; set; } = DateTime.Now;
+
+        [Required]
+        [StringLength(ExpenseDescriptionMaxLength, MinimumLength = ExpenseDescriptionMinLength)]
+        public string Description { get; set; } = null!;
 
         public Guid BudgetId { get; set; }
         public IEnumerable<AddBudgetViewModel> Budgets { get; set; } = new List<AddBudgetViewModel>();

@@ -1,6 +1,7 @@
-﻿using Microsoft.Build.Framework;
+﻿
 using PerfectBudget.Data.Models;
 using PerfectBudgetApp.Contracts;
+using System.ComponentModel.DataAnnotations;
 
 namespace PerfectBudgetApp.Models.Expenses
 {
@@ -11,7 +12,9 @@ namespace PerfectBudgetApp.Models.Expenses
         [Required]
         public decimal Amount { get; set; }
         [Required]
-        public string Category { get; set; } 
+        public string Category { get; set; }  
+        [Required]
+        public string Description { get; set; } 
         [Required]
         public DateTime DateOfExpense { get; set; }
     }
