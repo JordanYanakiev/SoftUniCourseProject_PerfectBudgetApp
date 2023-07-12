@@ -22,20 +22,24 @@
 
 <div class="text-center row">
     @foreach (var expense in Model)
-    {
-        <div class="card col-4" style="width: 20rem; ">
-            <div class="card-body">
-
-                <h3 class="mb-0">@expense.Category</h3>
-                <h5 class="mb-0">Amount: @expense.Amount</h5>
-                <p class="mb-0">Date: @expense.DateOfExpense</p>
-                @*<p>Category: @expense.Category</p>*@
+    { 
+        @*<div class="row">*@
+         <div class="col-3 mb-3">
+            <div class="card col-4" style="width: 20rem; ">
+                <div class="card-body">
+                    <h3 class="mb-0">@expense.Category</h3>
+                    <h5 class="mb-0">Amount: @expense.Amount</h5>
+                    <p class="mb-0">Date: @expense.DateOfExpense</p>
+                </div>
+                <form class="input-group-sm" asp-controller="Book" asp-action="AddToCollection" asp-route-id="@expense.ExpenseId">
+                    <input type="submit" value="Edit Expense" class="fs-6 btn btn-success mb-3 p-2" />
+                </form>
+                <form class="input-group-sm" asp-controller="Book" asp-action="AddToCollection" asp-route-id="@expense.ExpenseId">
+                    <input type="submit" value="Remove Expense" class="fs-6 btn btn-danger mb-3 p-2" />
+                </form>
             </div>
-
-            <form class="input-group-sm" asp-controller="Book" asp-action="AddToCollection" asp-route-id="@expense.ExpenseId">
-                <input type="submit" value="Add to Collection" class="fs-6 btn btn-success mb-3 p-2" />
-            </form>
-            <a href="/Book/Edit/@expense.ExpenseId" class="btn btn-warning">Edit</a>
-        </div>
+         </div>
+      @*</div>*@
+         
     }
 </div>

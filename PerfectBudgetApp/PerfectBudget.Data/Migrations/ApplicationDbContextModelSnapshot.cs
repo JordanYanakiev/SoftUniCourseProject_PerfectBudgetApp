@@ -455,6 +455,11 @@ namespace PerfectBudgetApp.Data.Migrations
                     b.Property<DateTime>("DateOfIssuedExpense")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BudgetId");

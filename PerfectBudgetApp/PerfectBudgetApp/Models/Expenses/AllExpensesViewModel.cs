@@ -11,7 +11,7 @@ namespace PerfectBudgetApp.Models.Expenses
         [Required]
         public decimal Amount { get; set; }
         [Required]
-        public string Category { get; set; }
+        public string Category { get; set; } 
         [Required]
         public DateTime DateOfExpense { get; set; }
     }

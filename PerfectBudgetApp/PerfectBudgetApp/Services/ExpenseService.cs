@@ -94,9 +94,9 @@ namespace PerfectBudgetApp.Services
                                   Category = e.Expense.Category.Name,
                                   DateOfExpense = e.Expense.DateOfIssuedExpense
                               }).ToListAsync();
-            allExpenses.OrderBy(e => e.DateOfExpense);
+            var allExpensesSorted = allExpenses.OrderByDescending(e => e.DateOfExpense);
 
-            return allExpenses;
+            return allExpensesSorted;
         }
     }
 }

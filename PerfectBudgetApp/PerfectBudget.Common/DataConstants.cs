@@ -2,6 +2,9 @@
 {
     public static class DataConstants
     {
+        public const int ExpenseDescriptionMaxLength = 150;
+        public const int ExpenseDescriptionMinLength = 5;
+
         public const int BudgetNameMaxLength = 25;
         public const int BudgetNameMinLength = 3;
 

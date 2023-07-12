@@ -1,4 +1,4 @@
-﻿
+﻿using static PerfectBudget.Common.DataConstants;
 using PerfectBudget.Data.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +16,9 @@ namespace PerfectBudgetApp.Data.Models
         public Category Category { get; set; } = null!;
         [Required]
         public decimal Amount { get; set; }
+        [Required]
+        [MaxLength(ExpenseDescriptionMaxLength)]
+        public string Description { get; set; } = null!;
 
         [Required]
         public Guid BudgetId { get; set; }
