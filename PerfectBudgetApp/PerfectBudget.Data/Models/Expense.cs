@@ -28,6 +28,7 @@ namespace PerfectBudgetApp.Data.Models
 
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateOfIssuedExpense { get; set; }
         public IEnumerable<UserExpense> BudgetsExpenses { get;set; } = new List<UserExpense>();
     }

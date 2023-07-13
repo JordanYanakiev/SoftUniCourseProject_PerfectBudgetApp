@@ -16,6 +16,7 @@ namespace PerfectBudgetApp.Models.Expenses
         [Required]
         public string Description { get; set; } 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateOfExpense { get; set; }
     }
 }

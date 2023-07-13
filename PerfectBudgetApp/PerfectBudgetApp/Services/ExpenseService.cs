@@ -93,7 +93,7 @@ namespace PerfectBudgetApp.Services
                                   ExpenseId = e.ExpenseId,
                                   Amount = e.Expense.Amount,
                                   Category = e.Expense.Category.Name,
-                                  DateOfExpense = e.Expense.DateOfIssuedExpense,
+                                  DateOfExpense = e.Expense.DateOfIssuedExpense.Date,
                                   Description = e.Expense.Description
                               }).ToListAsync();
             var allExpensesSorted = allExpenses.OrderByDescending(e => e.DateOfExpense);

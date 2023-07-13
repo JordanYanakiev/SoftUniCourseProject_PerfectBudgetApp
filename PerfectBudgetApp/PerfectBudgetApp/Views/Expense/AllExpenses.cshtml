@@ -30,7 +30,7 @@
                     <h3 class="mb-0">@expense.Category</h3>
                     <h5 class="mb-0">Amount: @expense.Amount</h5>
                     <p class="mb-0">Description: @expense.Description</p>
-                    <p class="mb-0">Date: @expense.DateOfExpense</p>
+                    <p class="mb-0">Date: @expense.DateOfExpense.ToShortDateString()</p>
                 </div>
                 <form class="input-group-sm" asp-controller="Book" asp-action="AddToCollection" asp-route-id="@expense.ExpenseId">
                     <input type="submit" value="Edit Expense" class="fs-6 btn btn-success mb-3 p-2" />

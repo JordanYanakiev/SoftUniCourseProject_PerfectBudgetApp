@@ -14,6 +14,7 @@ namespace PerfectBudgetApp.Models.Expenses
         public decimal ExpenceAmount { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateOfExpense { get; set; } = DateTime.Now;
 
         [Required]
