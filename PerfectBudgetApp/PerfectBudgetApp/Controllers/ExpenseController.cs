@@ -39,11 +39,14 @@ namespace PerfectBudgetApp.Controllers
         {
             string userId = GetUserId();
 
-            await expenseService.CreateExpense(model, userId);
-            
+            await expenseService.CreateExpense(model, userId);       
 
+            return RedirectToAction(nameof(AllExpenses));
+        }
 
-
+        public async Task<IActionResult> DeleteExpense(Guid id)
+        {
+            await expenseService.DeleteExpenseAsync(id);
 
             return RedirectToAction(nameof(AllExpenses));
         }

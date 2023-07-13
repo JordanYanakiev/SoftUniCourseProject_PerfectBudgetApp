@@ -54,6 +54,16 @@ namespace PerfectBudgetApp.Services
             budgetDbContext.SaveChanges();        
         }
 
+        public async Task DeleteExpenseAsync(Guid expenseId)
+        {
+
+            var expenseToDelete = await budgetDbContext.Expenses
+                                    .FirstOrDefaultAsync(e => e.Id == expenseId);
+
+            budgetDbContext.Remove(expenseToDelete);
+            await budgetDbContext.SaveChangesAsync();
+        }
+
         //Get all budgets for the current user and all categories for the expenses
         public async Task <CreateExpenseViewModel> GetAllCategoriesAsync(string userId)
         {
