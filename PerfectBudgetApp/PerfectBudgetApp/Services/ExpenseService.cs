@@ -64,6 +64,15 @@ namespace PerfectBudgetApp.Services
             await budgetDbContext.SaveChangesAsync();
         }
 
+        public Task EditExpense(CreateExpenseViewModel model, string userId)
+        {
+
+
+
+
+            throw new NotImplementedException();
+        }
+
         //Get all budgets for the current user and all categories for the expenses
         public async Task <CreateExpenseViewModel> GetAllCategoriesAsync(string userId)
         {
@@ -109,6 +118,44 @@ namespace PerfectBudgetApp.Services
             var allExpensesSorted = allExpenses.OrderByDescending(e => e.DateOfExpense);
 
             return allExpensesSorted;
+        }
+
+        public async Task <CreateExpenseViewModel> GetCreateExpenseViewModelAsync(Guid id, string userId)
+        {
+            var expenseToEdit = budgetDbContext.Expenses
+                                .FirstOrDefault(e => e.Id == id);
+
+            var categories = budgetDbContext.Categories
+                            .Select(c => new CategoryViewModel()
+                            {
+                                Id = c.Id,
+                                CategoryName = c.Name
+                            }).ToList();
+
+            var budgets = await budgetDbContext.UsersBudgets
+                          .Where(x => x.UserId == userId)
+                          .Select(b => new AddBudgetViewModel()
+                          {
+                              Id = b.BudgetId,
+                              Name = b.Budget.Name,
+                              Amount = b.Budget.Amount
+                          }).ToListAsync();
+
+            var expenseViewModel = new CreateExpenseViewModel() 
+            {
+                ExpenseId = expenseToEdit.Id,
+                ExpenceAmount = expenseToEdit.Amount,
+                DateOfExpense = expenseToEdit.DateOfIssuedExpense,
+                Description = expenseToEdit.Description,
+                BudgetId = expenseToEdit.BudgetId,
+                CategoryId = expenseToEdit.CategoryId,
+                Categories = categories,
+                Budgets = budgets
+            };
+
+
+
+            return expenseViewModel;
         }
     }
 }

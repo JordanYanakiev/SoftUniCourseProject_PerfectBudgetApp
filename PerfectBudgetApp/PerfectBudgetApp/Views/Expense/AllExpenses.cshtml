@@ -32,7 +32,7 @@
                     <p class="mb-0">Description: @expense.Description</p>
                     <p class="mb-0">Date: @expense.DateOfExpense.ToShortDateString()</p>
                 </div>
-                <form class="input-group-sm" asp-controller="Expense" asp-action="EditExpense" asp-route-id="@expense.ExpenseId">
+                <form class="input-group-sm" asp-controller="Expense" asp-action="EditExpense" asp-route-id="@expense.ExpenseId" method="get">
                     <input type="submit" value="Edit Expense" class="fs-6 btn btn-success mb-3 p-2" />
                 </form>
                 <form class="input-group-sm" asp-controller="Expense" asp-action="DeleteExpense" asp-route-id="@expense.ExpenseId">

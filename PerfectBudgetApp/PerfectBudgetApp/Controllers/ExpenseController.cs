@@ -51,6 +51,13 @@ namespace PerfectBudgetApp.Controllers
             return RedirectToAction(nameof(AllExpenses));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> EditExpense(Guid id)
+        {
+            string userId = GetUserId();
+            CreateExpenseViewModel expenseViewModel = await expenseService.GetCreateExpenseViewModelAsync(id, userId);
 
+            return View(expenseViewModel);
+        }
     }
 }
