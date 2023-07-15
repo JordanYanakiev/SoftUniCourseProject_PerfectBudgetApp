@@ -72,9 +72,10 @@ namespace PerfectBudgetApp.Controllers
             if (ModelState.IsValid)
             {
                 await expenseService.EditExpense(model, id);
+                return RedirectToAction(nameof(AllExpenses));
             }
 
-            return RedirectToAction(nameof(AllExpenses));
+            return View(model);
         }
     }
 }
