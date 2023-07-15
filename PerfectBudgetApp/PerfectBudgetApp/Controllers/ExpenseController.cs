@@ -3,6 +3,7 @@ using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data.Models;
 using PerfectBudgetApp.Models.Budgets;
 using PerfectBudgetApp.Models.Expenses;
+using PerfectBudgetApp.Services;
 
 namespace PerfectBudgetApp.Controllers
 {
@@ -58,6 +59,22 @@ namespace PerfectBudgetApp.Controllers
             CreateExpenseViewModel expenseViewModel = await expenseService.GetCreateExpenseViewModelAsync(id, userId);
 
             return View(expenseViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditExpense(CreateExpenseViewModel model, Guid id)
+        {
+            string userId = GetUserId();
+            model.ExpenseId = id;
+            model.Categories = await expenseService.GetAllCategories();
+            model.Budgets = await expenseService.GetAllBudgets(userId);
+
+            if (ModelState.IsValid)
+            {
+                await expenseService.EditExpense(model, id);
+            }
+
+            return RedirectToAction(nameof(AllExpenses));
         }
     }
 }

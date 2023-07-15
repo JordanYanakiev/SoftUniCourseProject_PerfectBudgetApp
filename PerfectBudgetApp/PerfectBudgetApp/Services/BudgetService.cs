@@ -58,18 +58,8 @@ namespace PerfectBudgetApp.Services
 
         public async Task EditBudget(EditBudgetViewModel editBudgetViewModel, Guid budgetId, string userId)
         {
-            //var budget = new Budget()
-            //{
-            //    Id = editBudgetViewModel.Id,
-            //    Name = editBudgetViewModel.Name,
-            //    Amount = editBudgetViewModel.Amount
-            //};
-
             var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
 
-            //var userBudget = await dbContext.UsersBudgets
-                //.FirstOrDefaultAsync(u => u.UserId == userId && u.BudgetId == budgetId);     
-            
             var userBudget = await dbContext.Budgets
                 .FirstOrDefaultAsync(u => u.Id == budgetId);
 

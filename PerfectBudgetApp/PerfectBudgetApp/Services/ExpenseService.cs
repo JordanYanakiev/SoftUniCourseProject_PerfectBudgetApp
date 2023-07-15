@@ -66,12 +66,54 @@ namespace PerfectBudgetApp.Services
 
         public Task EditExpense(CreateExpenseViewModel model, string userId)
         {
-
-
-
-
             throw new NotImplementedException();
         }
+
+        public async Task EditExpense(CreateExpenseViewModel model, Guid id)
+        {
+            //Get 
+            var expenseToEdit = budgetDbContext.Expenses
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+
+            expenseToEdit.Result.Description = model.Description;
+            expenseToEdit.Result.Amount = model.ExpenceAmount;
+            expenseToEdit.Result.DateOfIssuedExpense = model.DateOfExpense;
+            expenseToEdit.Result.BudgetId = model.BudgetId;
+            expenseToEdit.Result.CategoryId = model.CategoryId;
+
+            await budgetDbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<AddBudgetViewModel>> GetAllBudgets(string userId)
+        {
+            var budgets = await budgetDbContext.UsersBudgets
+                 .Where(b => b.UserId == userId)
+                 .Select(b => new AddBudgetViewModel()
+                 {
+                     Id = b.BudgetId,
+                     Name = b.Budget.Name,
+                     Amount = b.Budget.Amount
+                 }).ToListAsync();
+
+
+            return budgets;
+        }
+
+        public async Task <IEnumerable<CategoryViewModel>> GetAllCategories()
+        {
+
+            var categories = await budgetDbContext.Categories
+                            .Select(c => new CategoryViewModel()
+                            {
+                                Id = c.Id,
+                                CategoryName = c.Name
+                            }).ToListAsync();
+
+            return categories;
+        }
+
+
 
         //Get all budgets for the current user and all categories for the expenses
         public async Task <CreateExpenseViewModel> GetAllCategoriesAsync(string userId)
@@ -153,9 +195,9 @@ namespace PerfectBudgetApp.Services
                 Budgets = budgets
             };
 
-
-
             return expenseViewModel;
         }
+
+
     }
 }

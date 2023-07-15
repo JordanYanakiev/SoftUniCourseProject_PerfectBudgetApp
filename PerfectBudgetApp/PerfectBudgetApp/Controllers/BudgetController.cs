@@ -45,7 +45,7 @@ namespace PerfectBudgetApp.Controllers
         {
             string userId =  User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             EditBudgetViewModel editBudgetModel = await budgetService.GetEditBudgetViewModel(id, userId);
-            EditBudgetViewModel editBudgetModel2 = await budgetService.GetEditBudgetViewModel(id, userId);
+            //EditBudgetViewModel editBudgetModel2 = await budgetService.GetEditBudgetViewModel(id, userId);
 
             return View(editBudgetModel);
         }
