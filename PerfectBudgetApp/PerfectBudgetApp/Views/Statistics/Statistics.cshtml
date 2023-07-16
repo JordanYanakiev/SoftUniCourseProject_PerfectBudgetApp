@@ -1,0 +1,45 @@
+﻿@using PerfectBudgetApp.Models.Expenses;
+@using PerfectBudgetApp.Models.Statistics;
+
+@model StatisticsViewModel
+@{
+    ViewBag.Title = "All Statistics";
+}
+
+
+<div class="container" style=" margin-bottom:0px;  vertical-align: middle;">
+    <div class="row justify-content-between">
+        <div class="col-2" style=" vertical-align: middle;">
+            <h1> Expenses </h1style>
+        </div>
+        <div class="col-2" style=" vertical-align: middle;">
+            <form class="input-group-sm" asp-controller="Expense" asp-action="CreateExpense" method="get">
+                <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Add Expense" />
+            </form>
+        </div>
+    </div>
+</div>
+<hr style="margin-top:0px;" />
+
+<div class="text-center row">
+    @foreach (var expense in Model.CategoriesList)
+    { 
+        @*<div class="row">*@
+             <div class="col-3 mb-3">
+                <div class="card col-4" style="width: 20rem; ">
+                    <div class="card-body">
+                        <h3 class="mb-0">@expense</h3>
+                    </div>
+                    <form class="input-group-sm" asp-controller="Expense" asp-action="EditExpense" method="get">
+                        <input type="submit" value="Edit Expense" class="fs-6 btn btn-success mb-3 p-2" />
+                    </form>
+                    <form class="input-group-sm" asp-controller="Expense" asp-action="DeleteExpense">
+                        <input type="submit" value="Remove Expense" class="fs-6 btn btn-danger mb-3 p-2" />
+                    </form>
+                </div>
+             </div>
+        @*</div>*@
+
+    }
+</div>
+

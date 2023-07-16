@@ -1,12 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PerfectBudgetApp.Contracts;
+using PerfectBudgetApp.Models.Statistics;
 
 namespace PerfectBudgetApp.Controllers
 {
-    public class StatisticsController : Controller
+    public class StatisticsController : BaseController
     {
-        public IActionResult Index()
+        private readonly IStatisticsService statisticsService;
+
+        public StatisticsController(IStatisticsService _statistics)
         {
-            return View();
+            statisticsService = _statistics;
+        }
+
+
+        public async Task<IActionResult> Statistics()
+        {
+            string userId = GetUserId();
+            StatisticsViewModel model = new StatisticsViewModel();
+            model.CategoriesList = await statisticsService.GetAllExpensesBydates(userId);
+            return View(model);
         }
     }
 }
