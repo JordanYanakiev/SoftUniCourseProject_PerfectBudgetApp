@@ -1,9 +1,12 @@
-﻿using PerfectBudgetApp.Models.Statistics;
+﻿using PerfectBudgetApp.Data.Models;
+using PerfectBudgetApp.Models.Expenses;
+using PerfectBudgetApp.Models.Statistics;
 
 namespace PerfectBudgetApp.Contracts
 {
     public interface IStatisticsService
     {
-        Task <IEnumerable<string>> GetAllExpensesBydates(string userId);
+        Task <IEnumerable<ExpenseStatsViewModel>> GetAllExpensesBydates(string userId);
+        Task
     }
 }

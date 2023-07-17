@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PerfectBudgetApp.Contracts;
 using PerfectBudgetApp.Data;
+using PerfectBudgetApp.Data.Models;
+using PerfectBudgetApp.Models.Expenses;
 using PerfectBudgetApp.Models.Statistics;
 
 namespace PerfectBudgetApp.Services
@@ -14,17 +16,25 @@ namespace PerfectBudgetApp.Services
             budgetDbContext = _budgetDbContext;
         }
 
-        public async Task <IEnumerable<string>>  GetAllExpensesBydates(string userId)
+        public async Task <IEnumerable<ExpenseStatsViewModel>>  GetAllExpensesBydates(string userId)
         {
-            //StatisticsViewModel model = new StatisticsViewModel();
             DateTime today = DateTime.Now;
             var expenseCategoriesByDate = await budgetDbContext.UsersExpenses
              .Where(x => x.UserId == userId && x.Expense.DateOfIssuedExpense >= today + TimeSpan.FromDays(-30))
-             .Select(e => e.Expense.Category.Name.ToString())
+             .Select(e => new ExpenseStatsViewModel()
+             {
+                 ExpenseId = e.ExpenseId,
+                 ExpenceAmount = e.Expense.Amount,
+                 DateOfExpense = e.Expense.DateOfIssuedExpense,
+                 Description = e.Expense.Description,
+                 BudgetId = e.Expense.BudgetId,
+                 CategoryName = e.Expense.Category.Name
+             })
              .ToListAsync();
-            //model.CategoriesList = expenseCategoriesByDate;
 
             return expenseCategoriesByDate;
         }
+
+
     }
 }

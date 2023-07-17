@@ -7,6 +7,7 @@ namespace PerfectBudgetApp.Models.Expenses
 {
     public class CreateExpenseViewModel
     {
+        
         [Required]
         public Guid ExpenseId { get; set; }
 
