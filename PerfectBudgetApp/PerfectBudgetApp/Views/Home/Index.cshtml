@@ -2,7 +2,74 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<div class="row">
+    <div class="col-6">
+        <h3>Bar Chart</h3>
+        <canvas id="barChart" width="200" height="110" style="width:197px;height:110px;"></canvas>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $ajax({
+          type: "POST",
+            url: "/Home/Index",
+            data: "",
+            contextType: "application/json; charset=utf8",
+            dataType: "json",
+            success: OnSuccess,
+
+        });
+
+        function OnSuccess(data) {
+            const barChart = document.getElementById('barChart');
+            var _data = data;
+            var _labels = _data[0];
+            var _ChartData = _data[1];
+            var colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple'];
+
+            new Chart(barchart, 
+            {
+                type: 'bar',
+                data: {
+                    labels: _labels,
+                    datasets: [{
+                        backgroundColor: colors,
+                        data: _ChartData,
+                        borderWidth: 1
+                    }]
+                }
+            })
+        }
+
+
+    });  
+    
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</div>*@

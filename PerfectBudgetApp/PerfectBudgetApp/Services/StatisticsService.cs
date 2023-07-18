@@ -16,7 +16,7 @@ namespace PerfectBudgetApp.Services
             budgetDbContext = _budgetDbContext;
         }
 
-        public async Task <IEnumerable<ExpenseStatsViewModel>>  GetAllExpensesBydates(string userId)
+        public async Task<IEnumerable<ExpenseStatsViewModel>> GetAllExpensesBydates(string userId)
         {
             DateTime today = DateTime.Now;
             var expenseCategoriesByDate = await budgetDbContext.UsersExpenses
@@ -35,6 +35,45 @@ namespace PerfectBudgetApp.Services
             return expenseCategoriesByDate;
         }
 
+        public Task<Dictionary<string, decimal>> GetAllExpenseSortedByCategories(IEnumerable<ExpenseStatsViewModel> expenses)
+        {
+            Dictionary<string, decimal> result = new Dictionary<string, decimal>();
+            result.Add("Groceries", 0m);
+            result.Add("Utilities", 0m);
+            result.Add("Car", 0m);
+            result.Add("Loan", 0m);
+            result.Add("Internet", 0m);
+            result.Add("Mobile", 0m);
+            result.Add("Leasing", 0m);
+            result.Add("Electricity", 0m);
+            result.Add("Water", 0m);
 
+            foreach (var expense in expenses)
+            {
+                string category = expense.CategoryName;
+                decimal expenseValue = expense.ExpenceAmount;
+
+                if (category == "Groceries")
+                {
+                    result["Groceries"] += expenseValue;
+                }
+                if (category == "Utilities") ;
+                if (category == "Car") ;
+                if (category == "Loan") ;
+                if (category == "Internet") ;
+                if (category == "Mobile") ;
+                if (category == "Leasing") ;
+                if (category == "Electricity") ;
+                if (category == "Water")
+                {
+                    result["Water"] += expenseValue;
+                }
+
+            }
+
+
+
+            throw new NotImplementedException();
+        }
     }
 }

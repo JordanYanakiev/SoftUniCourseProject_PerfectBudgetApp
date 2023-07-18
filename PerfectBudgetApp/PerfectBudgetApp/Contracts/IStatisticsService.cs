@@ -7,6 +7,6 @@ namespace PerfectBudgetApp.Contracts
     public interface IStatisticsService
     {
         Task <IEnumerable<ExpenseStatsViewModel>> GetAllExpensesBydates(string userId);
-        Task
+        Task <Dictionary<string, decimal>> GetAllExpenseSortedByCategories(IEnumerable<ExpenseStatsViewModel> expenses);
     }
 }

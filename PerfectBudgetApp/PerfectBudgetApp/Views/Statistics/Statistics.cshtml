@@ -1,5 +1,6 @@
 ﻿@using PerfectBudgetApp.Models.Expenses;
 @using PerfectBudgetApp.Models.Statistics;
+@using System.Data;
 
 @model StatisticsViewModel
 @{
@@ -41,5 +42,16 @@
         @*</div>*@
 
     }
+
+    
+
+   @* @{ 
+       var myChart = new Chart(width: 600, height: 400) 
+       .AddTitle("Employees") 
+       .AddSeries(chartType: "column",
+          xValue: new[] {  "Peter", "Andrew", "Julie", "Mary", "Dave" }, 
+          yValues: new[] { "2", "6", "4", "5", "3" }) 
+       .Write();
+    }*@
 </div>
 
