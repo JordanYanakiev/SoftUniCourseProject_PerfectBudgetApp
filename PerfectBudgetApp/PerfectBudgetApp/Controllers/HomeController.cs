@@ -23,6 +23,19 @@ namespace PerfectBudgetApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public List<object> GetTotalOrder()
+        {
+            List<object> result = new List<object>();
+            List<string> labels = new List<string> { "test1", "test2", "test3" };
+            List<decimal> values = new List<decimal> { 12m, 23m, 3m };
+            result.Add(labels);
+            result.Add(values);
+            return result;
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

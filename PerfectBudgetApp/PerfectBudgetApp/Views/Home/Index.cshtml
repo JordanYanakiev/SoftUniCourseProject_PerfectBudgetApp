@@ -14,9 +14,9 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $ajax({
+        $.ajax({
           type: "POST",
-            url: "/Home/Index",
+            url: "/Home/GetTotalOrder",
             data: "",
             contextType: "application/json; charset=utf8",
             dataType: "json",
@@ -29,9 +29,9 @@
             var _data = data;
             var _labels = _data[0];
             var _ChartData = _data[1];
-            var colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple'];
+            var colors = ['Red', 'Blue', 'Green'];
 
-            new Chart(barchart, 
+            new Chart(barChart, 
             {
                 type: 'bar',
                 data: {
