@@ -22,26 +22,71 @@
 </div>
 <hr style="margin-top:0px;" />
 
-<div class="text-center row">
-    @foreach (var expense in Model.CategoriesList)
-    { 
-        @*<div class="row">*@
+@*<div class="text-center row">*@
+    @*@foreach (var expense in Model.CategoriesList)
+    { *@
+        <div class="row">
              <div class="col-3 mb-3">
-                <div class="card col-4" style="width: 20rem; ">
-                    <div class="card-body">
-                        <h3 class="mb-0">@expense.CategoryName</h3>
+                @*<div class="card col-4" style="width: 20rem; ">
+                    <div class="card-body">*@
+                        @*<h3 class="mb-0">@expense.CategoryName</h3>*@
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>Bar Chart</h3>
+                            <canvas id="barChart" width="1600" height="1600" style="width:1607px;height:1610px;"></canvas>
+                        </div>
                     </div>
-                    <form class="input-group-sm" asp-controller="Expense" asp-action="EditExpense" method="get">
+
+
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $.ajax({
+                                type: "POST",
+                                url: "/Statistics/GetTotalOrder",
+                                data: "",
+                                contextType: "application/json; charset=utf8",
+                                dataType: "json",
+                                success: OnSuccess
+                            });
+
+                            function OnSuccess(data) {
+                                const barChart = document.getElementById('barChart');
+                                var _data = data;
+                                var _labels = _data[0];
+                                var _ChartData = _data[1];
+                                var colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Cian', 'Grey'];
+
+                                new Chart(barChart,
+                                    {
+                                        type: 'pie',
+                                        data: {
+                                            labels: _labels,
+                                            datasets: [{
+                                                backgroundColor: colors,
+                                                data: _ChartData,
+                                                borderWidth: 1
+                                            }]
+                                        }
+                                    })
+                            }
+                        });
+                    </script>
+
+                    </div>
+                    @*<form class="input-group-sm" asp-controller="Expense" asp-action="EditExpense" method="get">
                         <input type="submit" value="Edit Expense" class="fs-6 btn btn-success mb-3 p-2" />
                     </form>
                     <form class="input-group-sm" asp-controller="Expense" asp-action="DeleteExpense">
                         <input type="submit" value="Remove Expense" class="fs-6 btn btn-danger mb-3 p-2" />
-                    </form>
-                </div>
-             </div>
-        @*</div>*@
+                    </form>*@
+               @* </div>
+             </div>*@
+        </div>
 
-    }
+    @*}*@
 
     
 
@@ -53,5 +98,5 @@
           yValues: new[] { "2", "6", "4", "5", "3" }) 
        .Write();
     }*@
-</div>
+@*</div>*@
 

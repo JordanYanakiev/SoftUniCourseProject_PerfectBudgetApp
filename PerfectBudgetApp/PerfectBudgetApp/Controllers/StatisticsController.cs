@@ -13,13 +13,18 @@ namespace PerfectBudgetApp.Controllers
             statisticsService = _statistics;
         }
 
-
-        public async Task<IActionResult> Statistics()
+        [HttpPost]
+        public async Task<List<object>> GetTotalOrder()
         {
             string userId = GetUserId();
             StatisticsViewModel model = new StatisticsViewModel();
-            model.CategoriesList = await statisticsService.GetAllExpensesBydates(userId);
-            return View(model);
+            var expenseStats = await statisticsService.GetAllExpensesBydates(userId);
+            model.Costs = await statisticsService.GetAllExpenseSortedByCategories(expenseStats);
+            return model.Costs;
+        }
+        public async Task<IActionResult> Statistics()
+        {
+            return View();
         }
     }
 }
