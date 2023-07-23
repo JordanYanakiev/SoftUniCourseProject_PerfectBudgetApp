@@ -39,7 +39,7 @@
                     $(document).ready(function () {
                         $.ajax({
                             type: "POST",
-                            url: "/Statistics/GetTotalOrder",
+                            url: "/Statistics/GetLastThirtyDays",
                             data: "",
                             contextType: "application/json; charset=utf8",
                             dataType: "json",
@@ -82,14 +82,14 @@
                         <canvas id="barChart" width="1600" height="1600" style="width:1607px;height:1610px;"></canvas>
                     </div>
                 </div>
-
+@*
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $.ajax({
                             type: "POST",
-                            url: "/Statistics/GetTotalOrder",
+                            url: "/Statistics/GetLastSevenDays",
                             data: "",
                             contextType: "application/json; charset=utf8",
                             dataType: "json",
@@ -104,17 +104,17 @@
                             var colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Cian', 'Grey'];
 
                             new Chart(pieChart,
-                                {
-                                    type: 'pie',
-                                    data: {
-                                        labels: _labels,
-                                        datasets: [{
-                                            backgroundColor: colors,
-                                            data: _ChartData,
-                                            borderWidth: 1
-                                        }]
-                                    }
-                                })
+                            {
+                                type: 'pie',
+                                data: {
+                                    labels: _labels,
+                                    datasets: [{
+                                        backgroundColor: colors,
+                                        data: _ChartData,
+                                        borderWidth: 1
+                                    }]
+                                }
+                            })
                         }
                     });
                 </script>

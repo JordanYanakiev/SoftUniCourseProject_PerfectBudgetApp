@@ -6,6 +6,7 @@
 
         public IEnumerable<string> CategoryNames { get; set; } = new List<string>();
         public IEnumerable<decimal> ExpenseCosts { get; set; } = new List<decimal>();
-        public List<object> Costs { get; set; } = new List<object>();
+        public List<object> CostsLastThirtyDays { get; set; } = new List<object>();
+        public List<object> CostsLastSevenDays { get; set; } = new List<object>();
     }
 }

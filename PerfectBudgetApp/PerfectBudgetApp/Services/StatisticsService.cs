@@ -16,7 +16,26 @@ namespace PerfectBudgetApp.Services
             budgetDbContext = _budgetDbContext;
         }
 
-        public async Task<IEnumerable<ExpenseStatsViewModel>> GetAllExpensesBydates(string userId)
+        public async Task<IEnumerable<ExpenseStatsViewModel>> GetAllExpensesLastSevenDays(string userId)
+        {
+            DateTime today = DateTime.Now;
+            var expenseCategoriesByDate = await budgetDbContext.UsersExpenses
+             .Where(x => x.UserId == userId && x.Expense.DateOfIssuedExpense >= today + TimeSpan.FromDays(-7))
+             .Select(e => new ExpenseStatsViewModel()
+             {
+                 ExpenseId = e.ExpenseId,
+                 ExpenceAmount = e.Expense.Amount,
+                 DateOfExpense = e.Expense.DateOfIssuedExpense,
+                 Description = e.Expense.Description,
+                 BudgetId = e.Expense.BudgetId,
+                 CategoryName = e.Expense.Category.Name
+             })
+             .ToListAsync();
+
+            return expenseCategoriesByDate;
+        }
+
+        public async Task<IEnumerable<ExpenseStatsViewModel>> GetAllExpensesLastThirtyDays(string userId)
         {
             DateTime today = DateTime.Now;
             var expenseCategoriesByDate = await budgetDbContext.UsersExpenses
