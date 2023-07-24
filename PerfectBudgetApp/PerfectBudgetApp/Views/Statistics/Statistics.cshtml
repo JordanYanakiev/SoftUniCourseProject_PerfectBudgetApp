@@ -22,14 +22,15 @@
 </div>
 <hr style="margin-top:0px;" />
 
-<div class="row">
+<div class="row ">
+    @*1st card*@
     <div class="col-3 mb-3">
         <div class="card col-4" style="width: 20rem; ">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-8" width="1600" height="900" style="width:1200px;height:500px;" >
                         <h3>Last 30 days</h3>
-                        <canvas id="barChart" width="1600" height="1600" style="width:1607px;height:1610px;"></canvas>
+                        <canvas id="pieChart" width="290" height="290" style="width:290px;height:290px;"></canvas>
                     </div>
                 </div>
 
@@ -40,56 +41,6 @@
                         $.ajax({
                             type: "POST",
                             url: "/Statistics/GetLastThirtyDays",
-                            data: "",
-                            contextType: "application/json; charset=utf8",
-                            dataType: "json",
-                            success: OnSuccess
-                        });
-
-                        function OnSuccess(data) {
-                            const barChart = document.getElementById('barChart');
-                            var _data = data;
-                            var _labels = _data[0];
-                            var _ChartData = _data[1];
-                            var colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Cian', 'Grey'];
-
-                            new Chart(barChart,
-                                {
-                                    type: 'pie',
-                                    data: {
-                                        labels: _labels,
-                                        datasets: [{
-                                            backgroundColor: colors,
-                                            data: _ChartData,
-                                            borderWidth: 1
-                                        }]
-                                    }
-                                })
-                        }
-                    });
-                </script>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-3 mb-3">
-        <div class="card col-4" style="width: 20rem; ">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <h3>Last 7 days</h3>
-                        <canvas id="barChart" width="1600" height="1600" style="width:1607px;height:1610px;"></canvas>
-                    </div>
-                </div>
-@*
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $.ajax({
-                            type: "POST",
-                            url: "/Statistics/GetLastSevenDays",
                             data: "",
                             contextType: "application/json; charset=utf8",
                             dataType: "json",
@@ -118,8 +69,57 @@
                         }
                     });
                 </script>
-
             </div>
+        </div>
+    </div>
+
+
+    @*2nd card*@
+    <div class="card col-4" style="width: 20rem; ">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-8" width="1600" height="900" style="width:1200px;height:500px;">
+                    <h3>Last 7 days</h3>
+                    <canvas id="lastSevenDaysChart" width="290" height="290" style="width:1600px;height:500px;"></canvas>
+                </div>
+            </div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script type="text/javascript">
+            $(document).ready(function () {
+            $.ajax({
+            type: "POST",
+            url: "/Statistics/GetLastSevenDays",
+            data: "",
+            contextType: "application/json; charset=utf8",
+            dataType: "json",
+            success: OnSuccess
+            });
+
+            function OnSuccess(data) {
+            const lastSevenDaysChart = document.getElementById('lastSevenDaysChart');
+            var _data = data;
+            var _labels = _data[0];
+            var _ChartData = _data[1];
+            var colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Cian', 'Grey'];
+
+            new Chart(lastSevenDaysChart,
+            {
+            type: 'pie',
+            data: {
+            labels: _labels,
+            datasets: [{
+            backgroundColor: colors,
+            data: _ChartData,
+            values: _data,
+            borderWidth: 1
+            }]
+            }
+            })
+            }
+            });
+            </script>
         </div>
     </div>
 </div>
