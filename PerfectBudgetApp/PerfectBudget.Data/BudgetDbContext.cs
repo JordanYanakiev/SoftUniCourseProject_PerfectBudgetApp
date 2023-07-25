@@ -15,6 +15,8 @@ namespace PerfectBudgetApp.Data
         public DbSet<BudgetExpense> BudgetsExpenses { get; set; }
         public DbSet<Debt> Debts { get; set; }
         public DbSet<Expense> Expenses { get; set; }
+        public DbSet<Saving> Savings { get; set; }
+        public DbSet<UserSaving> UsersSavings { get; set; }
         public DbSet<UserBudget> UsersBudgets { get; set; }
         public DbSet<UserDebt> UsersDebts { get; set; }
         public DbSet<UserExpense> UsersExpenses { get; set; }
@@ -52,6 +54,10 @@ namespace PerfectBudgetApp.Data
 
             builder.Entity<ExpenseCategory>()
                 .HasKey(c => new { c.CategoryId, c.ExpenseId });
+
+            builder.Entity<UserSaving>()
+                .HasKey(us => new { us.UserId, us.SavingsId});
+
             #endregion
 
             #region Set precision to decimals
@@ -72,6 +78,11 @@ namespace PerfectBudgetApp.Data
             builder.Entity<Expense>()
                 .Property(x => x.Amount)
                 .HasPrecision(18, 2);
+
+            builder.Entity<Saving>()
+                .Property(x => x.Amount)
+                .HasPrecision(18, 2);
+
             #endregion
 
             #region Set delete behavior for BudgetExpense
@@ -80,6 +91,11 @@ namespace PerfectBudgetApp.Data
                 .HasOne(b => b.Budget)
                 .WithMany(b => b.BudgetsExpenses)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.Entity<ExpenseCategory>()
+            //    .HasOne(ec => ec.Expense)
+            //    .WithOne(c => c.Category)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
 
             //builder.Entity<BudgetExpense>()

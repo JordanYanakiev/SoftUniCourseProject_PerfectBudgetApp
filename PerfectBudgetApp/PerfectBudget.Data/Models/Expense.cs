@@ -13,7 +13,7 @@ namespace PerfectBudgetApp.Data.Models
         public int CategoryId { get; set; }
         [Required]
         [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; } = null!;
+        public Category Category { get; set; }
         [Required]
         public decimal Amount { get; set; }
         [Required]
@@ -30,6 +30,6 @@ namespace PerfectBudgetApp.Data.Models
         [Required]
         [DataType(DataType.Date)]
         public DateTime DateOfIssuedExpense { get; set; }
-        public IEnumerable<UserExpense> BudgetsExpenses { get;set; } = new List<UserExpense>();
+        //public IEnumerable<UserExpense> BudgetsExpenses { get;set; } = new List<UserExpense>();
     }
 }

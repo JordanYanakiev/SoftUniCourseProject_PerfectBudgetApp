@@ -14,10 +14,10 @@ namespace PerfectBudget.Data.Models
         [Required]
         public int CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; } = null!;
+        public Category Category { get; set; }
         [Required]
         public Guid ExpenseId { get; set; }
         [ForeignKey(nameof(ExpenseId))]
-        public Expense Expense { get; set; } = null!;
+        public Expense Expense { get; set; }
     }
 }
