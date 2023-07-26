@@ -1,6 +1,7 @@
-﻿@using PerfectBudgetApp.Models.Budgets;
+﻿@using PerfectBudgetApp.Models.Savings;
 
 
+@model IEnumerable<AddNewSavingViewModel>
 @{
 }
 
@@ -10,8 +11,8 @@
             <h1> Savings </h1style>
         </div>
         <div class="col-2" style=" vertical-align: middle;">
-            <form class="input-group-sm" asp-controller="Budget" asp-action="AddBudget" method="get">
-                <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Create new sing" />
+            <form class="input-group-sm" asp-controller="Savings" asp-action="AddSaving" method="get">
+                <input class="mb-xl-4 btn btn-light mb-2 w-100 p-3 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Create new saving" />
             </form>
         </div>
     </div>
@@ -19,14 +20,17 @@
 <hr style="margin-top:0px;" />
 <div class="container" style="position:center;">
     @*Here should be a for that goes through all savings*@
+
+    @foreach(var saving in Model)
+    {
         <div class="container" style="margin-bottom:3px; padding-left:235px;">
             <div class="row" style="height:55px; width:850px; border-width:120px; border-radius: 10px; border:solid; padding-top:5px; ">
 
                 <div class="col-6 col-md-4" style="text-align:left;  padding-top:3px;">
-                    <h5 class="mt-1">budget.Name</h5>
+                    <h5 class="mt-1">@saving.SavingName</h5>
                 </div>
                 <div class="col-4 col-md-4" style=" text-align: center; center-block;  padding-top:8px;">
-                    <p class="mb-10">Amount: budget.Amount</p>
+                    <p class="mb-10">Amount: @saving.SavingAmount</p>
                 </div>
                 <div class="col-4 col-md-4" style=" text-align: right; padding-top:1px;">
                     <form class="input-group-sm" asp-controller="Budget" asp-action="EditBudget"  method="get">
@@ -37,6 +41,7 @@
 
             </div>
         </div>
+    }
     
 </div>
 

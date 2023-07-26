@@ -17,5 +17,9 @@
         public const int CategoryNameMaxLength = 55;
         public const int CategoryNameMinLength = 5;
 
+        public const int SavingNameMaxLength = 55;
+        public const int SavingNameMinLength = 5;
+
+
     }
 }
