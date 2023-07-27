@@ -6,6 +6,7 @@ using PerfectBudgetApp.Data;
 using PerfectBudgetApp.Data.Models;
 using PerfectBudgetApp.Models.Budgets;
 using PerfectBudgetApp.Models.Savings;
+using System.Xml.Linq;
 
 namespace PerfectBudgetApp.Services
 {
@@ -18,6 +19,43 @@ namespace PerfectBudgetApp.Services
             dbContext = _dbContext;
         }
 
+        public async Task AddMoreMoney(AddMoreMoneyViewModel model, string userId, Guid id)
+        {
+            var saving = new Saving()
+            {
+                Id = id,
+                Name = model.SavingName,
+                Amount = model.SavingAmount + model.AmountToAdd
+            };
+
+            var budget = await dbContext.Budgets.FirstOrDefaultAsync(b => b.Id == model.BudgetId);
+            budget.Amount -= model.AmountToAdd;
+
+            dbContext.Budgets.Update(budget);
+            dbContext.Savings.Update(saving);
+            await dbContext.SaveChangesAsync(); 
+        }
+
+        public async Task<AddMoreMoneyViewModel> AddMoreMoneyAsync(Guid savingId, string userId)
+        {
+            var saving = await dbContext.Savings
+                .FirstOrDefaultAsync(s => s.Id == savingId);
+
+            var addMoreMoney = new AddMoreMoneyViewModel();
+            addMoreMoney.SavingAmount = saving.Amount;
+            addMoreMoney.SavingName = saving.Name;
+            addMoreMoney.SavingId = savingId;
+            addMoreMoney.Budgets = await dbContext.UsersBudgets
+                .Where(b => b.UserId == userId)
+                .Select(b => new AddBudgetViewModel()
+                {
+                    Id = b.BudgetId,
+                    Name = b.Budget.Name,
+                    Amount = b.Budget.Amount
+                }).ToListAsync();
+            return addMoreMoney;
+        }
+
         public async Task CreateNewSavingAsync(AddNewSavingViewModel model, string userId)
         {
             Guid replacementGuid = Guid.NewGuid();
@@ -25,7 +63,6 @@ namespace PerfectBudgetApp.Services
             {
                 model.SavingId = replacementGuid;
             }
-
 
             var saving = new Saving()
             {
@@ -43,7 +80,6 @@ namespace PerfectBudgetApp.Services
             var budget = await dbContext.Budgets
                           .FirstOrDefaultAsync(x => x.Id == model.BudgetId);
             budget.Amount -= model.SavingAmount;
-
 
             dbContext.Savings.Add(saving);
             dbContext.UsersSavings.Add(userSaving);

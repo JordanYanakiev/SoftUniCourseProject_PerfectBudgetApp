@@ -33,12 +33,12 @@
                     <p class="mb-10">Amount: @saving.SavingAmount</p>
                 </div>
                 <div class="col-4 col-md-3" style=" text-align: right; padding-top:1px;">
-                    <form class="input-group-sm" asp-controller="Savings" asp-action="AddMoreMoney" method="get">
+                    <form class="input-group-sm" asp-controller="Savings" asp-action="AddMoreMoney" asp-route-id="@saving.SavingId" method="get">
                         <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-20 p-2 fw-bold" style="color:white; background-color:cornflowerblue;" type="submit" value="Add More Money" />
                     </form>
                 </div>
                 <div class="col-4 col-md-3" style=" text-align: right; padding-top:1px;">
-                    <form class="input-group-sm" asp-controller="Savings" asp-action="TransferMoneyToBudget" method="get">
+                    <form class="input-group-sm" asp-controller="Savings" asp-action="TransferMoneyToBudget" asp-route-id="@saving.SavingId" method="get">
                         <input class="btn-primary mb-xl-4 btn btn-light mb-2 w-20 p-2 fw-bold" style="color:black; background-color:greenyellow;" type="submit" value="Transfer Money To Budget" />
                     </form>
                 </div>
