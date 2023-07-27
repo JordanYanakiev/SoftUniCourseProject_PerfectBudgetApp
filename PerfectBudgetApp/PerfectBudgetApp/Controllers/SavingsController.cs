@@ -7,10 +7,12 @@ namespace PerfectBudgetApp.Controllers
     public class SavingsController : BaseController
     {
         private readonly ISavingsService service;
+        private readonly IExpenseService expenseService;
 
-        public SavingsController(ISavingsService _service)
+        public SavingsController(ISavingsService _service, IExpenseService _expenseService)
         {
             service = _service;
+            expenseService = _expenseService;
         }
 
         public async Task<IActionResult> Savings()
@@ -23,6 +25,9 @@ namespace PerfectBudgetApp.Controllers
         public async Task<IActionResult> AddSaving()
         {
             AddNewSavingViewModel model = new AddNewSavingViewModel();
+            model.Budgets = await expenseService.GetAllBudgets(GetUserId());
+
+
             return View(model);
         }
 
