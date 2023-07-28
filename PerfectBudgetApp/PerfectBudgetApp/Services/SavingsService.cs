@@ -102,5 +102,22 @@ namespace PerfectBudgetApp.Services
 
             return allSavings;
         }
+
+        public async Task TransferMoneyToBudget(AddMoreMoneyViewModel model, string userId, Guid id)
+        {
+            var saving = new Saving()
+            {
+                Id = id,
+                Name = model.SavingName,
+                Amount = model.SavingAmount - model.AmountToAdd
+            };
+
+            var budget = await dbContext.Budgets.FirstOrDefaultAsync(b => b.Id == model.BudgetId);
+            budget.Amount += model.AmountToAdd;
+
+            dbContext.Budgets.Update(budget);
+            dbContext.Savings.Update(saving);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

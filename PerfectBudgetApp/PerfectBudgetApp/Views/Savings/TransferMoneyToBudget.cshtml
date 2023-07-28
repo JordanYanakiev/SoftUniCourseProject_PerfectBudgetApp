@@ -1,5 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using PerfectBudgetApp.Models.Savings;
+
+@model AddMoreMoneyViewModel
+
 @{
+    ViewBag.Title = "Transfer Money To Budget";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form class="input-group-sm" method="post" asp-route-id="@Model.SavingId">
+            <div class="mb-3">
+                <label asp-for="@Model.SavingName" class="form-label">Name</label>
+                <input asp-for="@Model.SavingName" class="form-control" aria-required="true" />
+                <span asp-validation-for="SavingName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.SavingAmount" class="form-label">Saved Amount</label>
+                <input asp-for="@Model.SavingAmount" class="form-control" aria-required="true" />
+                <span asp-validation-for="SavingAmount" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.AmountToAdd" class="form-label">Transfer Amount</label>
+                <input asp-for="@Model.AmountToAdd" class="form-control" aria-required="true" />
+                <span asp-validation-for="AmountToAdd" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="@Model.BudgetId" class="form-label">Select budget</label>
+                <select asp-for="@Model.BudgetId" class="form-control">
+                    @foreach (var budget in @Model.Budgets)
+                    {
+                                <option value="@budget.Id"> @budget.Name - @budget.Amount</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.BudgetId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Transfer to budget" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+            <partial name="_ValidationScriptsPartial" />
 }

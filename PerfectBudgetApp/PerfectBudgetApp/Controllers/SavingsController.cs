@@ -57,10 +57,24 @@ namespace PerfectBudgetApp.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> TransferMoneyToBudget(Guid savingId)
+        public async Task<IActionResult> TransferMoneyToBudget(Guid id)
+        {
+            AddMoreMoneyViewModel model = await service.AddMoreMoneyAsync(id, GetUserId());
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> TransferMoneyToBudget(AddMoreMoneyViewModel model, Guid id)
+        {
+            await service.TransferMoneyToBudget(model, GetUserId(), id);
+            return RedirectToAction(nameof(Savings));
+        }
+
+        public async Task<IActionResult> DeleteSaving(Guid iid)
         {
 
-            return View();
+
+            return RedirectToAction(nameof(Savings));
         }
     }
 }

@@ -8,6 +8,7 @@ namespace PerfectBudgetApp.Contracts
         Task <IEnumerable<AddNewSavingViewModel>> GetAllSavingsAsync(string userId);
         Task<AddMoreMoneyViewModel> AddMoreMoneyAsync(Guid savingId, string userId);
         Task AddMoreMoney(AddMoreMoneyViewModel model, string userId, Guid id);
+        Task TransferMoneyToBudget(AddMoreMoneyViewModel model, string userId, Guid id);
 
 
 
