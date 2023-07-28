@@ -87,6 +87,26 @@ namespace PerfectBudgetApp.Services
             await dbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteSaving(Guid savingId, string userId)
+        {
+            var saving = await dbContext.Savings.FirstOrDefaultAsync(x => x.Id == savingId);
+
+            var userSaving = await dbContext.UsersSavings.FirstOrDefaultAsync(s => s.SavingsId== savingId && 
+                                s.UserId == userId);
+
+            if (saving != null)
+            {
+                dbContext.Savings.Remove(saving);
+            }
+
+            if (userSaving != null)
+            {
+                dbContext.UsersSavings.Remove(userSaving);
+            }
+
+            await dbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<AddNewSavingViewModel>> GetAllSavingsAsync(string userId)
         {
             var allSavings = await dbContext.UsersSavings

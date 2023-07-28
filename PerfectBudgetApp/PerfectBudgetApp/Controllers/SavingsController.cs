@@ -70,9 +70,9 @@ namespace PerfectBudgetApp.Controllers
             return RedirectToAction(nameof(Savings));
         }
 
-        public async Task<IActionResult> DeleteSaving(Guid iid)
+        public async Task<IActionResult> DeleteSaving(Guid id)
         {
-
+            await service.DeleteSaving(id, GetUserId());
 
             return RedirectToAction(nameof(Savings));
         }

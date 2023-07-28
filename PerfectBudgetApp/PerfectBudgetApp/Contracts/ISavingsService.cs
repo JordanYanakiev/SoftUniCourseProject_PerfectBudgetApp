@@ -9,7 +9,7 @@ namespace PerfectBudgetApp.Contracts
         Task<AddMoreMoneyViewModel> AddMoreMoneyAsync(Guid savingId, string userId);
         Task AddMoreMoney(AddMoreMoneyViewModel model, string userId, Guid id);
         Task TransferMoneyToBudget(AddMoreMoneyViewModel model, string userId, Guid id);
-
+        Task DeleteSaving(Guid savingId, string userId);
 
 
 

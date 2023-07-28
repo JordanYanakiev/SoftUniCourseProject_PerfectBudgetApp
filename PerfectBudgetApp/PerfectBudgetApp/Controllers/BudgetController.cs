@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace PerfectBudgetApp.Controllers
 {
-    public class BudgetController : Controller
+    public class BudgetController : BaseController
     {
         private readonly IBudgetService budgetService;
 
@@ -59,7 +59,13 @@ namespace PerfectBudgetApp.Controllers
             {
                 await budgetService.EditBudget(editBudgetModel, id, userId);
             }
+            return RedirectToAction(nameof(Budget));
+        }
 
+
+        public async Task<IActionResult> DeleteBudget(Guid id)
+        {
+            await budgetService.DeleteBudget(id, GetUserId());
             return RedirectToAction(nameof(Budget));
         }
 

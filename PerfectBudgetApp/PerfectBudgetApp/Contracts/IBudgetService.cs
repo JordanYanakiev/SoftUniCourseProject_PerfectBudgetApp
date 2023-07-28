@@ -11,6 +11,6 @@ namespace PerfectBudgetApp.Contracts
         Task <IEnumerable<AddBudgetViewModel>> GetAllBudgets(string userId);
         Task <EditBudgetViewModel> GetEditBudgetViewModel(Guid budgetId, string userId);
         Task EditBudget(EditBudgetViewModel editBudgetViewModel, Guid budgetId, string userId);
-        //Task AddEditedBudget(EditBudgetViewModel addBudgetViewModel, string userId);
+        Task DeleteBudget(Guid budgetId, string userId);
     }
 }

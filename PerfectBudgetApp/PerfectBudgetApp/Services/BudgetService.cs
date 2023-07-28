@@ -100,8 +100,20 @@ namespace PerfectBudgetApp.Services
             return modelsList;
         }
 
+        public async Task DeleteBudget(Guid budgetId, string userId)
+        {
+            var budget = await dbContext.Budgets.FirstOrDefaultAsync(b => b.Id == budgetId);
+            var userBudget = await dbContext.UsersBudgets.FirstOrDefaultAsync(ub => ub.UserId == userId && ub.BudgetId == budgetId);
+            
+            
+           
+                dbContext.Budgets.Remove(budget);
+            
 
-
-
+            
+                dbContext.UsersBudgets.Remove(userBudget);
+            
+            await dbContext.SaveChangesAsync();
+        }
     }
 }
