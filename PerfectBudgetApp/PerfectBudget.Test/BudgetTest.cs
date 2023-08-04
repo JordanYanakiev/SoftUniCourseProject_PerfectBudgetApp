@@ -12,11 +12,19 @@ namespace PerfectBudget.Test
     [TestFixture]
     public class BudgetTest
     {
-        [Test] public void CreateBudgetTest()
+        private BudgetService budgetService;
+
+        [SetUp] 
+        public void SetUp() 
         {
             var mockBudgetDb = new Mock<BudgetDbContext>();
+            budgetService = new BudgetService(mockBudgetDb.Object);
+        }
 
-            var budget = new BudgetService();
+        [Test] public void CreateBudgetTest()
+        {
+            
+
 
         }
 
