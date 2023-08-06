@@ -23,8 +23,8 @@ namespace PerfectBudget.Test
         public void SetUp() 
         {
             mockBudgetDb = new Mock<BudgetDbContext>();
-            mockBudgetDb.Setup(x => x.)
-            budgetService = new BudgetService(mockBudgetDb);
+
+            //budgetService = new BudgetService(mockBudgetDb);
 
             var budget = new Budget()
             {
@@ -34,23 +34,23 @@ namespace PerfectBudget.Test
             };
 
 
-            var userBudget = new UserBudget()
-            {
-                UserId = "00020000 - 0230 - 1234 - 5678 - 123000000000",
-                BudgetId = Guid.NewGuid(),
-                User = new User()
-                {
-                    Id = "00020000 - 0230 - 1234 - 5678 - 123000000000",
-                    NormalizedUserName = "Coco Maroko"
-                },
-                Budget = budget
-            };
+            //var userBudget = new UserBudget()
+            //{
+            //    UserId = "00020000 - 0230 - 1234 - 5678 - 123000000000",
+            //    BudgetId = Guid.NewGuid(),
+            //    User = new User()
+            //    {
+            //        Id = "00020000 - 0230 - 1234 - 5678 - 123000000000",
+            //        NormalizedUserName = "Coco Maroko"
+            //    },
+            //    Budget = budget
+            //};
         }
 
         [Test] 
         public void CreateBudgetTest()
         {
-            mockBudgetDb.Setup(x => x.CreateBudget());
+            //mockBudgetDb.Setup(x => x.CreateBudget());
 
 
 
