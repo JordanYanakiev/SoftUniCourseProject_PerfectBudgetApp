@@ -1,5 +1,7 @@
 ﻿
 using PerfectBudget.Data.Models;
+using PerfectBudgetApp.Data;
+using PerfectBudget.Data;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 using System;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-using PerfectBudgetApp.Data;
+
 
 namespace PerfectBudget.Test
 {
@@ -66,17 +68,26 @@ namespace PerfectBudget.Test
 
         public BudgetDbContext CreateDbContext()
         {
+            //var optionsBuilder = new DbContextOptionsBuilder<PerfectBudgetApp.Data.BudgetDbContext>();
             var optionsBuilder = new DbContextOptionsBuilder<BudgetDbContext>();
 
             // Uncomment to use an in-memory database from Entity Framework
-            //optionsBuilder.UseInMemoryDatabase(uniqueDbName);
             optionsBuilder.UseInMemoryDatabase(uniqueDbName);
 
-            // Uncomment to use the "Eventures_QA" SQL Server testing database 
-            //optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Eventures_QA");
-
-            return new BudgetDbContext(optionsBuilder.Options);
+            return new PerfectBudgetApp.Data.BudgetDbContext(optionsBuilder.Options);
         }
+
+        private void SeedDatabase()
+        {
+            var dbContext = this.CreateDbContext();
+            var userStore = new UserStore<IdentityUser>(dbContext);
+            var hasher = new PasswordHasher<IdentityUser>();
+            var normalizer = new UpperInvariantLookupNormalizer();
+            var userManager = new UserManager<IdentityUser>(
+                userStore, null, hasher, null, null, normalizer, null, null, null);
+
+        }
+
 
 
 
