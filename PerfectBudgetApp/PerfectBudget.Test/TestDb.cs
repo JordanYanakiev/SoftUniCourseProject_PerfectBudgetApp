@@ -34,7 +34,6 @@ namespace PerfectBudget.Test
         public Budget budget02 { get; private set; }
         public BudgetExpense budgetExpense01 { get; private set; }
         public BudgetExpense budgetExpense02 { get; private set; }
-        public BudgetExpense budgetExpense03 { get; private set; }
         public Category categoryElectricity { get; private set; }
         public Category categoryGroceries { get; private set; }
         public Debt debt01 { get; private set; }
@@ -49,7 +48,6 @@ namespace PerfectBudget.Test
         public DebtPaymentDebt debtPaymentDebt02 { get; private set; }
         public Expense expense01 { get; private set; }
         public Expense expense02 { get; private set; }
-        public Expense expense03 { get; private set; }
         public ExpenseCategory expenseCategory01 { get; private set;}
         public ExpenseCategory expenseCategory02 { get; private set;}
         public Saving saving01 { get; private set; }
@@ -62,10 +60,6 @@ namespace PerfectBudget.Test
         public UserDebt userDebt02 { get; private set; }
         public UserExpense userExpense01 { get; private set; }
         public UserExpense userExpense02 { get; private set; }
-        public UserExpense userExpense03 { get; private set; }
-        public UserExpense userExpense04 { get; private set; }
-        public UserExpense userExpense05 { get; private set; }
-        public UserExpense userExpense06 { get; private set; }
         public UserSaving userSaving01 { get; private set; }
         public UserSaving userSaving02 { get; private set; }
 
@@ -150,15 +144,6 @@ namespace PerfectBudget.Test
             };
             dbContext.Add(budgetExpense02);
             
-            //Create budgetExpense03
-            this.budgetExpense03 = new BudgetExpense()
-            {
-                ExpenseId = expense02.Id,
-                Expense = this.expense02,
-                BudgetId = this.budget02.Id,
-                Budget = this.budget02
-            };
-            dbContext.Add(budgetExpense03);
 
             //Create category01
             this.categoryElectricity = new Category()
@@ -299,21 +284,112 @@ namespace PerfectBudget.Test
             };
             dbContext.Add(expense02);
 
+            this.expenseCategory01 = new ExpenseCategory()
+            {
+                CategoryId = expense01.CategoryId,
+                Category = expense01.Category,
+                ExpenseId = expense01.Id,
+                Expense = expense01
+            };
+            dbContext.Add(expenseCategory01);
+
+            this.expenseCategory02 = new ExpenseCategory()
+            {
+                CategoryId = expense02.CategoryId,
+                Category = expense02.Category,
+                ExpenseId = expense02.Id,
+                Expense = expense02
+            };
+            dbContext.Add(expenseCategory02);
+
+            this.saving01 = new Saving()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Saving 01",
+                Amount = 1000m
+            };
+            dbContext.Add(saving01);
+            
+            this.saving02 = new Saving()
+            {
+                Id = Guid.NewGuid(),
+                Name = "Saving 02",
+                Amount = 1024m
+            };
+            dbContext.Add(saving02);
+
+            this.userBudget01 = new UserBudget()
+            {
+                UserId = user01.Id,
+                User = user01,
+                BudgetId = budget01.Id,
+                Budget = budget01
+            };
+            dbContext.Add(userBudget01);
+            
+            this.userBudget02 = new UserBudget()
+            {
+                UserId = user02.Id,
+                User = user02,
+                BudgetId = budget02.Id,
+                Budget = budget02
+            };
+            dbContext.Add(userBudget02);
+
+            this.userDebt01 = new UserDebt()
+            {
+                UserId = user01.Id,
+                User = user01,
+                DebtId = debt01.Id,
+                Debt = debt01
+            };
+            dbContext.Add(userDebt01);
+            
+            this.userDebt02 = new UserDebt()
+            {
+                UserId = user02.Id,
+                User = user02,
+                DebtId = debt02.Id,
+                Debt = debt02
+            };
+            dbContext.Add(userDebt02);
+
+            this.userExpense01 = new UserExpense()
+            {
+                UserId = user01.Id,
+                User = user01,
+                ExpenseId = expense01.Id,
+                Expense = expense01
+            };
+            dbContext.Add(userExpense01);
+            
+            this.userExpense02 = new UserExpense()
+            {
+                UserId = user02.Id,
+                User = user02,
+                ExpenseId = expense02.Id,
+                Expense = expense02
+            };
+            dbContext.Add(userExpense02);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            this.userSaving01 = new UserSaving()
+            {
+                UserId = user01.Id,
+                User = user01,
+                SavingsId = saving01.Id,
+                Saving = saving01
+            };
+            dbContext.Add(userSaving01);
+            
+            this.userSaving02 = new UserSaving()
+            {
+                UserId = user02.Id,
+                User = user02,
+                SavingsId = saving02.Id,
+                Saving = saving02
+            };
+            dbContext.Add(userSaving02);
 
 
 
