@@ -1,5 +1,4 @@
-﻿
-using PerfectBudget.Data.Models;
+﻿using PerfectBudget.Data.Models;
 using PerfectBudgetApp.Data;
 using PerfectBudget.Data;
 
@@ -11,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.ComponentModel.DataAnnotations;
@@ -85,7 +83,7 @@ namespace PerfectBudget.Test
             //Create user01
             this.user01 = new IdentityUser()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = "05580017-67d4-4766-9f1d-3327a26530fd",
                 UserName = "someemail@mail.bg",
                 NormalizedUserName = "SOMEEMAIL@MAIL.BG",
                 PasswordHash = "AQAAAAEAACcQAAAAEKJIzyYhT78c69h+srExBSUAF3SJaPu9PRpeDDXLviaUCrf6GUsQCYejGE933QseIQ=="
@@ -97,7 +95,7 @@ namespace PerfectBudget.Test
             //Create user02
             this.user02 = new IdentityUser()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = "1c6d2885-57e4-4736-8b96-141a3890d399",
                 UserName = "some.email@mail.bg",
                 NormalizedUserName = "SOME.EMAIL@MAIL.BG",
                 PasswordHash = "AQAAAAEAACcQAAAAEDAD9fgJshOHRusNzGKJBkm4NZj0fhrVpnLcf5kNUQG/toW2NDbzZyyAwc3XAc1JxQ=="

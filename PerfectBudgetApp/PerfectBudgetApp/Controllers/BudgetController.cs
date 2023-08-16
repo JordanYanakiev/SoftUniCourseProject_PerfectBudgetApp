@@ -32,10 +32,10 @@ namespace PerfectBudgetApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBudget(AddBudgetViewModel model)
+        public IActionResult AddBudget(AddBudgetViewModel model)
         {
             string userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            await budgetService.AddNewBudget(model, userId);
+             budgetService.AddNewBudget(model, userId);
 
             return RedirectToAction(nameof(Budget));
         }
